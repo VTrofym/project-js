@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
+    "save-dev": "^0.0.1-security"
+  }
+}
