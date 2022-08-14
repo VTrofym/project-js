@@ -1,53 +1,295 @@
+// function getSubstring(string, length) {
+//   const substring = "Hello World";
+//   substring.slice(string, length)
+//   return substring;
+// }
+// console.log(getSubstring("Hello World", 3));
+// console.log(getSubstring("Hello World", 6));
+// console.log(getSubstring("Hello World", 8));
+// console.log(getSubstring("Hello World", 11));
+// console.log(getSubstring("Hello World", 0));
+
+// function checkPassword(password) {
+//   const ADMIN_PASSWORD = 'jqueryismyjam';
+//   if ADMIN_PASSWORD === 'jqueryismyjam' ? 'Welcome!' : 'Access denied, wrong password!';
+//   return checkPassword;
+// }
+// console.log(checkPassword("mangohackzor"));
+// console.log(checkPassword("polyhax"));
+// console.log(checkPassword("jqueryismyjam"));
 
 
 
 
 
+// приведение в нижний регистр, разбили, сшили с тире
+const title = 'Top 10 benefits of React framework';
+const normalizedTitle = title.toLowerCase();
+console.log(normalizedTitle);
+const words = normalizedTitle.split(' ');
+console.log(words);
+const slug = words.join('-');
+console.log(slug);
 
 
 
+// Замена регистра на противоположный
+// const string = 'JavaScript';
+// const letters = string.split('');
+// let invertedString = '';
+// console.log(letters);
+// for (const letter of letters) {
+//   console.log(letter);
+//   invertedString += letter === letter.toLowerCase()
+//     ? letter.toLocaleUpperCase()
+//     : letter.toLowerCase()
+// }
+// console.log(invertedString)
 
+//объединение элементов в 1 строку join 
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// const string = friends.join(', ');
+// console.log(string);
 
+//объединение элементов в 1 строку string с отрезанием конца
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// let string = '';
+// for (const friend of friends) {
+//   string += friend + ', ';
+// }
+// string = string.slice(0, string.length - 2);
+// console.log(string);
 
+// поиск самого маленького числа в массиве
+// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82];
+// let smallestNumber = numbers[0];
+// for (const number of numbers) {
+//   if (number < smallestNumber) {
+//     smallestNumber = number
+//   }
+// }
+//   console.log(`smallestNumber: `, smallestNumber);
 
+// поиск логина через for ... if
+// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+// const loginToFind = 'qwerty';
+// let message = `Пользователь ${loginToFind} не найден.`;
+// for (let i = 0; i < logins.length; i += 1) {
+//   const login = logins[i];
+//   if (login === loginToFind) {
+//     message = `Пользователь ${loginToFind} найден.`
+//     break;//   прерывание - вместо else 
+//   }
+// }
+// console.log(message);
 
+// поиск логина через .includes
+// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+// const loginToFind = 'qwerty';
+// const message = logins.includes(loginToFind)
+//   ? `Пользователь ${loginToFind} найден.`
+//   : `Пользователь ${loginToFind} не найден.`
+// console.log(message);
 
+// // сумма всех четных числел в массиве через for 
+// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
+// // 1 переменная total
+// let total = 0
+// // 2 перебрать массив
+// for (const number of numbers) {
+//   console.log(number)
+//   //3 на каждой итерации проверить элемент на четность
+//   if (number % 2 === 0) {  //если нечетное ставим !==
+//     console.log('Четное!!!!')
+//     // 4 если четный то плюcуем к total 
+// total += number
+//   }
+// }
+// console.log('Total: ', total)
 
+// // сумма всех четных числел в массиве через for 
+// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
+// // 1 переменная total
+// let total = 0
+// // 2 перебрать массив
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(numbers[i])
+//   //3 на каждой итерации проверить элемент на четность
+//   if (numbers[i] % 2 === 0) {  //если нечетное ставим !==
+//     console.log('Четное!!!!')
+//     // 4 если четный то плюcуем к total 
+// total += numbers[i]
+//   }
+// }
+// console.log('Total: ', total)
 
+// //посчитать общую сумму покупок через for...of когда не нужно изменять 
+// const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
+// let total = 0
+// for (const value of cart) {
+//   total += value
+// }
+// console.log('Total: ', total)
 
+// //посчитать общую сумму покупок через for
+// const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
+// // 2 сделать переменную total до цикла
+// let total = 0
+// // 1 перебрать массив
+// for (let i = 0; i < cart.length; i += 1) {
+//   // 3 каждый элемент приплюсовать к total 
+//   console.log(cart[i]);
+//   total += cart[i]
+// }
+// console.log('Total: ', total)
 
+// for of для массива???????????????
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// for (const friend of friends) {  // объявление имени переменной (внутри скобок)
+// console.log(friend)
+// }
 
+//--------------------------
+//for  для массива???????????????
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// console.table(friends);
+// for (let i = 0; i < friends.length; i += 1) {
+//   friends[i] += '--1';
+// }
+// console.table(friends)
+//---------------------------
+//замена значения
+// function a() {
+//     console.log('Hello')
+// }
+// a()
+// a = 10
+// console.log(a)
 
+//ссылочный тип
+// const objectA = {
+//     a: 10,
+//     b:true
+// }
+// const copyOfA = objectA
+// copyOfA.a = 'aaaa'
+// copyOfA.b = 'slon'
+// copyOfA.c = 'enot'
+// const copyOfA2 = copyOfA
+// copyOfA2.a = true
+// copyOfA.b = 'lisa'
+// copyOfA.c = 'enot'
+// console.log(copyOfA2)
 
+//???????????????????????
+// Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
+// и управление передаётся на следующую итерацию.
+// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
+// const threshold = 15;
+// for (let i = 0; i < numbers.length; i += 1) {
+//   if (numbers[i] < threshold) {
+//     continue;
+//   }
+//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
+// }
 
+//?????????
+// function getNameLength(name) {
+//   const message = `Name ${name} is ${name.length} characters long`;
+//   return message;
+// }
+// console.log(getNameLength("Poly"));
 
+//??????????????????
+// const min = 0;
+// const max = 20;
+// let total = 0;
+// for (let i = min; i <= max; i += 1) {
+//   if (i % 2 !== 0) {
+//     console.log(`Не четное: `, i);
+//     continue;
+//   }
+//   console.log(`четное: `, i);
+//   total += i;
+// }
+// console.log(`total: `, total);
 
+//???????????????
+// const minSalary = 500;
+// const maxSalary = 5000;
+// const empLoyees = 6;
+// let totalSalary = 0;
+// for (let i = 1; i <= empLoyees; i += 1) {
+//   const salary = Math.round(
+//     Math.random() * (maxSalary - minSalary) + minSalary,
+//   );
+//   console.log(`ЗП работника номер ${i} = ${salary}`);
+//   totalSalary += salary;
+//   console.log(`totalSalary: `, totalSalary);
+// }
 
+// for (let i = 20; i < 50; i += 3) {
+//   console.log(i);
+// }
+// console.log(`gjfjfjhfjh`);
 
+// //--------------------------
+// //Switch
 
+// function checkPassword(password) {
+//   const ADMIN_PASSWORD = "jqueryismyjam";
+//   let message;
+//   switch (password) {
+//       case null :
+//       message = "Canceled by user!";
+//       break;
+//       case ADMIN_PASSWORD :
+//       message = "Welcome!";
+//       break;
+//       default: message = "Access denied, wrong password!";
+//   }
+//   return message;
+// }
 
-
-
-
-
-
+// function getSubscriptionPrice(type) {
+//   let price;
+// switch (type) {
+//     case `starter` :
+//       price = 0;
+//       break;
+//     case `professional` :
+//       price = 20;
+//       break;
+//     case `organization` :
+//       price = 50;
+//       break;
+//   }
+//   return price;
+// }
 
 //----------------------
 // Функция
+//?????????????
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('А родители разрешили?');
+//   }
+// }
 
 // function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
 //   const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
 //   const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
 //   return message;
 // }
-// console.log(makeOrderMessage);
 
 // function calculateTotalPrice (orderedQuantity, pricePerItem) {
 //   const totalPrice = orderedQuantity * pricePerItem;
 //   return totalPrice;
 // };
 
-// function makeMessage (name, price) {
+// function makeMessage(name, price) {
 //   const message =`You picked ${name}, price per item is ${price} credits`;
 //   return message;
 // };
@@ -70,15 +312,7 @@
 // function sayHi() {
 //   console.log("Hello, this is my first function!");
 // }
-// sayHi();
-
-//---------------------
-// переменные в let повторно не пишатся
-
-// let productName = "Droid";
-// let pricePerItem = 2000;
-// productName = "Repair droid";
-// pricePerItem = 3500;
+// sayHi(); //-без этого текст не выводится 
 
 //------------------------------
 // тернарный оператор
@@ -88,7 +322,7 @@
 // console.log(messege);
 
 //-----------------------------
-//  if else if-else 
+//  if else if-else
 
 // const salary = 12500;
 // if (salary <= 500) {
@@ -111,8 +345,15 @@
 //   console.log('выводится');
 // }
 
+// let cost = 0;
+// const subscription = "pro";
+// if (subscription === "pro") {
+//   cost = 100;
+// }
+// console.log(cost); 
+
 //---------------------------------
-// проверка на равенство
+// проверка на равенство и использование логики
 
 // const sub = 'pro';
 // const canAccessContent = sub === 'pro' || sub === 'vip';
@@ -141,10 +382,10 @@
 // const isEqual = 1 == true;
 // console.log(isEqual);
 
-// const isEqual = 1 === false;
-// console.log(isEqual);
+// const isEqual2 = 1 === true;
+// console.log(isEqual2);
 
-// console.log('10' > 5)
+// console.log('10' > 5) - //оператор сравнения делает символы цифрами
 
 // console.log(10 > 5);
 
@@ -169,7 +410,7 @@
 // console.log(string3.includes(bed2));
 
 //------------------------
-//  вырезание частей строки
+//  вырезание частей строки []-один символ; .slice(1) - оставить от (1) до конца
 
 // let brand = `samSUng`;
 // console.log(brand[4]);
@@ -223,5 +464,4 @@
 // console.log(power);
 
 // console.log(base ** power);
-
 //------------------------
