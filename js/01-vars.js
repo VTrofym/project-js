@@ -1,13 +1,16 @@
-// function getSubstring(string, length) {
-//   const substring = "Hello World";
-//   substring.slice(string, length)
-//   return substring;
-// }
-// console.log(getSubstring("Hello World", 3));
-// console.log(getSubstring("Hello World", 6));
-// console.log(getSubstring("Hello World", 8));
-// console.log(getSubstring("Hello World", 11));
-// console.log(getSubstring("Hello World", 0));
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function checkPassword(password) {
 //   const ADMIN_PASSWORD = 'jqueryismyjam';
@@ -19,19 +22,28 @@
 // console.log(checkPassword("jqueryismyjam"));
 
 
+// function formatMessage(message, maxLength)
+//   message.length > maxLength ? message.slice(0, maxLength) : message.slice(1, maxLength);
+// console.log(formatMessage("Curabitur ligula sapien", 16))
 
 
+// // объединение и сумма элементов двух массивом через concat и for ... of
+// const array1 = [5, 10, 15, 20];
+// const array2 = [10, 20, 30];
+// let total = 0;
+// const numbers = array1.concat(array2);
+// console.log(numbers);
+// for (const number of numbers) {
+//   total += number;
+//   console.log(total);
+// }
 
 // приведение в нижний регистр, разбили, сшили с тире
-const title = 'Top 10 benefits of React framework';
-const normalizedTitle = title.toLowerCase();
-console.log(normalizedTitle);
-const words = normalizedTitle.split(' ');
-console.log(words);
-const slug = words.join('-');
-console.log(slug);
-
-
+// const title = 'Top 10 benefits of React framework';
+// const normalizedTitle = title.toLowerCase();
+// const words = normalizedTitle.split(' ');
+// const slug = words.join('-');
+// console.log(slug);
 
 // Замена регистра на противоположный
 // const string = 'JavaScript';
@@ -233,9 +245,22 @@ console.log(slug);
 // }
 // console.log(`gjfjfjhfjh`);
 
+//------------------------------
+// 2 примера цикла while 
+// let counter = 5;
+// while (counter < 15) {
+//   console.log("counter: ", counter);
+//   counter += 2;
+// }
+// let clientCounter = 18;
+// const maxClients = 25;
+// while (clientCounter < maxClients) {
+//   console.log(clientCounter);
+//   clientCounter += 1;
+// }
+
 // //--------------------------
 // //Switch
-
 // function checkPassword(password) {
 //   const ADMIN_PASSWORD = "jqueryismyjam";
 //   let message;
@@ -465,3 +490,23 @@ console.log(slug);
 
 // console.log(base ** power);
 //------------------------
+
+// {
+//   "printWidth": 60,
+//   "tabWidth": 2,
+//   "useTabs": false,
+//   "semi": true,
+//   "singleQuote": true,
+//   "trailingComma": "es5",
+//   "bracketSpacing": true,
+//   "jsxBracketSameLine": true,
+//   "jsxSingleQuote": true,
+//   "arrowParens": "always",
+//   "rangeStart": 0,
+//   "requirePragma": false,
+//   "insertPragma": false,
+//   "proseWrap": "preserve",
+//   "endOfLine": "lf",
+//   "parser": "babel-ts",
+//   "quoteProps": "consistent"
+// }
