@@ -12,6 +12,41 @@
 
 
 
+
+
+
+
+
+// function formatMessage(message, maxLength) {
+//   let result;
+//   if(message.length > maxLength) {
+//     message.slice[0, maxLength];
+    
+//   } else {
+//     message.slice[0, message];
+//   }
+//   return result;
+// }
+
+function checkForSpam(message) {
+  let result;
+  const lowMessage = message.toLowerCase();
+  if (lowMessage.includes('spam')) {
+    result = true ;
+  } else {
+    result = false ;
+  }
+  if (lowMessage.includes('sale')) {
+    result = true ;
+  } else {
+    result = false ;
+  }
+  return result ;
+}
+
+
+
+
 // function checkPassword(password) {
 //   const ADMIN_PASSWORD = 'jqueryismyjam';
 //   if ADMIN_PASSWORD === 'jqueryismyjam' ? 'Welcome!' : 'Access denied, wrong password!';
