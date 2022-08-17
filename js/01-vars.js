@@ -17,61 +17,22 @@
 
 
 
-// function formatMessage(message, maxLength) {
-//   let result;
-//   if(message.length > maxLength) {
-//     message.slice[0, maxLength];
-    
-//   } else {
-//     message.slice[0, message];
-//   }
-//   return result;
-// }
-
-function checkForSpam(message) {
-  let result;
-  const lowMessage = message.toLowerCase();
-  if (lowMessage.includes('spam')) {
-    result = true ;
-  } else {
-    result = false ;
-  }
-  if (lowMessage.includes('sale')) {
-    result = true ;
-  } else {
-    result = false ;
-  }
-  return result ;
-}
 
 
 
 
-// function checkPassword(password) {
-//   const ADMIN_PASSWORD = 'jqueryismyjam';
-//   if ADMIN_PASSWORD === 'jqueryismyjam' ? 'Welcome!' : 'Access denied, wrong password!';
-//   return checkPassword;
-// }
-// console.log(checkPassword("mangohackzor"));
-// console.log(checkPassword("polyhax"));
-// console.log(checkPassword("jqueryismyjam"));
 
 
-// function formatMessage(message, maxLength)
-//   message.length > maxLength ? message.slice(0, maxLength) : message.slice(1, maxLength);
-// console.log(formatMessage("Curabitur ligula sapien", 16))
 
 
-// // объединение и сумма элементов двух массивом через concat и for ... of
-// const array1 = [5, 10, 15, 20];
-// const array2 = [10, 20, 30];
-// let total = 0;
-// const numbers = array1.concat(array2);
-// console.log(numbers);
-// for (const number of numbers) {
-//   total += number;
-//   console.log(total);
-// }
+
+
+
+
+
+
+// const friends = 'Mango';
+// console.log(friends.split(''));
 
 // приведение в нижний регистр, разбили, сшили с тире
 // const title = 'Top 10 benefits of React framework';
@@ -93,19 +54,7 @@ function checkForSpam(message) {
 // }
 // console.log(invertedString)
 
-//объединение элементов в 1 строку join 
-// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// const string = friends.join(', ');
-// console.log(string);
-
-//объединение элементов в 1 строку string с отрезанием конца
-// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// let string = '';
-// for (const friend of friends) {
-//   string += friend + ', ';
-// }
-// string = string.slice(0, string.length - 2);
-// console.log(string);
+// ! массивы
 
 // поиск самого маленького числа в массиве
 // const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82];
@@ -117,7 +66,105 @@ function checkForSpam(message) {
 // }
 //   console.log(`smallestNumber: `, smallestNumber);
 
-// поиск логина через for ... if
+// ! split переводит строку в массив и разбивает слово на буквы
+// const friends = 'Mango';
+// console.log(friends.split(''));
+
+// ! join превращает массив в строку
+// const words = ['Mango', 'Poly', 'Ada'];
+// console.log(words)
+// console.log(words.join(" "));
+// console.log(words.join("-"));
+// console.log(words.join(", "));
+
+// ! indexOf дает порядковый номер
+// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// console.log(clients.indexOf("Poly")); // 2
+// console.log(clients.indexOf("Monkong")); // -1
+
+// ! includes поиск логина
+// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+// const loginToFind = 'qwerty';
+// const message = logins.includes(loginToFind)
+// console.log(message);
+
+// const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
+// const fruit = "cherry";
+// const hasFruit = redFruits.includes(fruit);
+// console.log(hasFruit)
+// if (hasFruit) {
+//   console.log(`${fruit} is a red fruit!`);
+// }
+
+// ! push добавляет элементы в конец массива
+// const numbers = [];
+// numbers.push(1);
+// console.log(numbers);
+// numbers.push(2);
+// console.log(numbers); 
+// numbers.push(3);
+// console.log(numbers); 
+// numbers.push(4);
+// console.log(numbers);
+// numbers.push(5);
+// console.log(numbers);
+
+// ! unshift добавляет элементы в начало массива
+// const numbers = [65676];
+// console.log(numbers);
+// numbers.unshift(1);
+// console.log(numbers);
+
+// ! pop удаляет последний элемент из конца массива
+// const numbers = [1, 2, 3, 4, 5];
+// console.log(numbers.pop()); 
+// console.log(numbers); 
+// console.log(numbers.pop()); 
+// console.log(numbers);
+// console.log(numbers.pop()); 
+// console.log(numbers);
+// console.log(numbers.pop()); 
+// console.log(numbers); 
+// console.log(numbers.pop());
+// console.log(numbers);
+
+// ! shift удаляет первый элемент в начале массива
+// const numbers = [1, 2, 3, 4, 5];
+// console.log(numbers); 
+// console.log(numbers.shift()); 
+// console.log(numbers); 
+
+// ! slice возвращает элементы от 1 до 3(не включая 3)
+// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// console.log(clients.slice(1, 3));
+
+// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// console.log(clients.slice(1));
+
+// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// console.log(clients.slice(-2));
+
+// ! slice объединение элементов в 1 строку string с отрезанием конца
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// let string = '';
+// for (const friend of friends) {
+//   string += friend + ', ';
+// }
+// string = string.slice(0, string.length - 2);
+// console.log(string);
+
+// ! concat объединение и сумма элементов двух массивом через concat и for ... of
+// const array1 = [5, 10, 15, 20];
+// const array2 = [10, 20, 30];
+// let total = 0;
+// const numbers = array1.concat(array2);
+// console.log(numbers);
+// for (const number of numbers) {
+//   total += number;
+//   console.log(total);
+// }
+
+// ! поиск логина через for ... if
 // const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
 // const loginToFind = 'qwerty';
 // let message = `Пользователь ${loginToFind} не найден.`;
@@ -130,15 +177,7 @@ function checkForSpam(message) {
 // }
 // console.log(message);
 
-// поиск логина через .includes
-// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
-// const loginToFind = 'qwerty';
-// const message = logins.includes(loginToFind)
-//   ? `Пользователь ${loginToFind} найден.`
-//   : `Пользователь ${loginToFind} не найден.`
-// console.log(message);
-
-// // сумма всех четных числел в массиве через for 
+//  сумма всех четных числел в массиве через for 
 // const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
 // // 1 переменная total
 // let total = 0
@@ -204,6 +243,27 @@ function checkForSpam(message) {
 //   friends[i] += '--1';
 // }
 // console.table(friends)
+
+//???????????????????????
+// Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
+// и управление передаётся на следующую итерацию.
+// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
+// const threshold = 15;
+// for (let i = 0; i < numbers.length; i += 1) {
+//   if (numbers[i] < threshold) {
+//     continue;
+//   }
+//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
+// }
+
+// ! не массивы
+
+// function getNameLength(name) {
+//   const message = `Name ${name} is ${name.length} characters long`;
+//   return message;
+// }
+// console.log(getNameLength("Poly"));
+
 //---------------------------
 //замена значения
 // function a() {
@@ -227,25 +287,6 @@ function checkForSpam(message) {
 // copyOfA.b = 'lisa'
 // copyOfA.c = 'enot'
 // console.log(copyOfA2)
-
-//???????????????????????
-// Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
-// и управление передаётся на следующую итерацию.
-// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
-// const threshold = 15;
-// for (let i = 0; i < numbers.length; i += 1) {
-//   if (numbers[i] < threshold) {
-//     continue;
-//   }
-//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
-// }
-
-//?????????
-// function getNameLength(name) {
-//   const message = `Name ${name} is ${name.length} characters long`;
-//   return message;
-// }
-// console.log(getNameLength("Poly"));
 
 //??????????????????
 // const min = 0;
@@ -281,7 +322,7 @@ function checkForSpam(message) {
 // console.log(`gjfjfjhfjh`);
 
 //------------------------------
-// 2 примера цикла while 
+// ? 2 примера цикла while 
 // let counter = 5;
 // while (counter < 15) {
 //   console.log("counter: ", counter);
@@ -294,8 +335,8 @@ function checkForSpam(message) {
 //   clientCounter += 1;
 // }
 
-// //--------------------------
-// //Switch
+
+// ? Switch
 // function checkPassword(password) {
 //   const ADMIN_PASSWORD = "jqueryismyjam";
 //   let message;
@@ -329,7 +370,6 @@ function checkForSpam(message) {
 
 //----------------------
 // Функция
-//?????????????
 // function checkAge(age) {
 //   if (age > 18) {
 //     return true;
@@ -375,14 +415,14 @@ function checkForSpam(message) {
 // sayHi(); //-без этого текст не выводится 
 
 //------------------------------
-// тернарный оператор
+// ! тернарный оператор
 
 // const balance = -1000;
 // const messege = balance >= 0 ? 'Позитивный баланс' : 'Негативный баланс';
 // console.log(messege);
 
 //-----------------------------
-//  if else if-else
+// ! if else if-else
 
 // const salary = 12500;
 // if (salary <= 500) {
@@ -513,7 +553,7 @@ function checkForSpam(message) {
 // console.log(result);
 
 // ----------------
-// вводим число, вводим степень, выводим результат
+// степень вводим число, вводим степень, выводим результат
 
 // let base = prompt("Введи число");
 // base = Number(base);
