@@ -11,18 +11,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+function getEvenNumbers(start, end) {
+  const newArr = [];
+  let total = 0;
+  for (let i = start; i < end.length; i += 1) {
+  } if (newArr[i] % 2 === 0) {
+    newArr.push(newArr[i]);
+  }
+  return newArr;
+}
 
 
 
@@ -54,7 +51,46 @@
 // }
 // console.log(invertedString)
 
+
+
+// ! Функции
+
+// ! поиск пароля в массиве через for ... of
+const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+function findLogin(allLogins, loginToFind) {
+  let message = `Пользователь ${loginToFind} не найден.`;
+  for (const login of allLogins) {
+    if (login === loginToFind) {
+      message = `Пользователь ${loginToFind} найден.`;
+    }
+  }
+  return message;
+};
+console.log(findLogin(logins, 'qwerty'));
+console.log(findLogin(logins, 'asdfghjj'));
+console.log(findLogin(logins, 'zxcvbn'));
+
+
+// вызов функции 
+// const add = function () {
+//   console.log('выполняется функция');
+// };
+// add();
+// add();
+// add();
+
+
 // ! массивы
+
+// function filterArray(numbers, value) {
+//   const newNumbers = [];                         // создали новый массив
+//   for (let i = 0; i < numbers.length; i += 1) {  // задали цикл на длину старого массива
+//     if (numbers[i] > value) {                    // если число в старом массиве больше чем value 
+//     newNumbers.push(numbers[i]);                 // то оно вставляется в новый массив
+//     }
+//   }
+//   return newNumbers;
+// }
 
 // поиск самого маленького числа в массиве
 // const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82];
@@ -98,12 +134,12 @@
 
 // ! push добавляет элементы в конец массива
 // const numbers = [];
-// numbers.push(1);
+// numbers.push(4);
 // console.log(numbers);
-// numbers.push(2);
-// console.log(numbers); 
-// numbers.push(3);
-// console.log(numbers); 
+// numbers.push(2, 6);
+// console.log(numbers);
+// numbers.push(8);
+// console.log(numbers);
 // numbers.push(4);
 // console.log(numbers);
 // numbers.push(5);
@@ -117,26 +153,26 @@
 
 // ! pop удаляет последний элемент из конца массива
 // const numbers = [1, 2, 3, 4, 5];
-// console.log(numbers.pop()); 
-// console.log(numbers); 
-// console.log(numbers.pop()); 
+// console.log(numbers.pop());
 // console.log(numbers);
-// console.log(numbers.pop()); 
+// console.log(numbers.pop());
 // console.log(numbers);
-// console.log(numbers.pop()); 
-// console.log(numbers); 
+// console.log(numbers.pop());
+// console.log(numbers);
+// console.log(numbers.pop());
+// console.log(numbers);
 // console.log(numbers.pop());
 // console.log(numbers);
 
 // ! shift удаляет первый элемент в начале массива
 // const numbers = [1, 2, 3, 4, 5];
-// console.log(numbers); 
-// console.log(numbers.shift()); 
-// console.log(numbers); 
+// console.log(numbers);
+// console.log(numbers.shift());
+// console.log(numbers);
 
 // ! slice возвращает элементы от 1 до 3(не включая 3)
 // const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
-// console.log(clients.slice(1, 3));
+// console.log(clients.slice(0, 5));
 
 // const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
 // console.log(clients.slice(1));
@@ -163,6 +199,17 @@
 //   total += number;
 //   console.log(total);
 // }
+// ! For ... of
+// function findLongestWord(string) {
+//   let newArr = string.split(' ');
+//   let longestWord = newArr[0];
+//   for (const fictional of newArr) {
+//     if (fictional.length > longestWord.length) {
+//       longestWord = fictional;
+//     }
+//   }
+//   return longestWord
+// }
 
 // ! поиск логина через for ... if
 // const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
@@ -172,12 +219,12 @@
 //   const login = logins[i];
 //   if (login === loginToFind) {
 //     message = `Пользователь ${loginToFind} найден.`
-//     break;//   прерывание - вместо else 
+//     break;//   прерывание - вместо else
 //   }
 // }
 // console.log(message);
 
-//  сумма всех четных числел в массиве через for 
+//  сумма всех четных числел в массиве через for
 // const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
 // // 1 переменная total
 // let total = 0
@@ -187,29 +234,30 @@
 //   //3 на каждой итерации проверить элемент на четность
 //   if (number % 2 === 0) {  //если нечетное ставим !==
 //     console.log('Четное!!!!')
-//     // 4 если четный то плюcуем к total 
+//     // 4 если четный то плюcуем к total
 // total += number
 //   }
 // }
 // console.log('Total: ', total)
 
-// // сумма всех четных числел в массиве через for 
-// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
-// // 1 переменная total
-// let total = 0
-// // 2 перебрать массив
-// for (let i = 0; i < numbers.length; i += 1) {
-//   console.log(numbers[i])
-//   //3 на каждой итерации проверить элемент на четность
-//   if (numbers[i] % 2 === 0) {  //если нечетное ставим !==
-//     console.log('Четное!!!!')
-//     // 4 если четный то плюcуем к total 
+// сумма всех четных числел в массиве через for
+const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
+// 1 переменная total
+let total = 0
+// 2 перебрать массив
+for (let i = 0; i < numbers.length; i += 1) {
+  console.log(numbers[i])
+  //3 на каждой итерации проверить элемент на четность
+  if (numbers[i] % 2 === 0) {  //если нечетное ставим !==
+    // console.log('Четное!!!!')
+    // 4 если четный то плюcуем к total
 // total += numbers[i]
-//   }
-// }
-// console.log('Total: ', total)
+  }
+}
+console.log('Total: ', total)
 
-// //посчитать общую сумму покупок через for...of когда не нужно изменять 
+// ! задачи: через for и через for...of
+// //посчитать общую сумму покупок через for...of когда не нужно изменять
 // const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
 // let total = 0
 // for (const value of cart) {
@@ -217,15 +265,15 @@
 // }
 // console.log('Total: ', total)
 
-// //посчитать общую сумму покупок через for
+//посчитать общую сумму покупок через for
 // const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
-// // 2 сделать переменную total до цикла
+// // 2 сделать переменную total для цикла
 // let total = 0
 // // 1 перебрать массив
 // for (let i = 0; i < cart.length; i += 1) {
-//   // 3 каждый элемент приплюсовать к total 
-//   console.log(cart[i]);
-//   total += cart[i]
+//   // 3 каждый элемент приплюсовать к total
+//   console.log(cart[i]); // вывод в консоль в столб всего массива
+//   total += cart[i] // сплюсовать содержимое массива
 // }
 // console.log('Total: ', total)
 
@@ -238,11 +286,11 @@
 //--------------------------
 //for  для массива???????????????
 // const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// console.table(friends);
+// console.log(friends);
 // for (let i = 0; i < friends.length; i += 1) {
 //   friends[i] += '--1';
 // }
-// console.table(friends)
+// console.log(friends)
 
 //???????????????????????
 // Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
@@ -322,7 +370,7 @@
 // console.log(`gjfjfjhfjh`);
 
 //------------------------------
-// ? 2 примера цикла while 
+// ? 2 примера цикла while
 // let counter = 5;
 // while (counter < 15) {
 //   console.log("counter: ", counter);
@@ -334,7 +382,6 @@
 //   console.log(clientCounter);
 //   clientCounter += 1;
 // }
-
 
 // ? Switch
 // function checkPassword(password) {
@@ -412,7 +459,7 @@
 // function sayHi() {
 //   console.log("Hello, this is my first function!");
 // }
-// sayHi(); //-без этого текст не выводится 
+// sayHi(); //-без этого текст не выводится
 
 //------------------------------
 // ! тернарный оператор
@@ -450,7 +497,7 @@
 // if (subscription === "pro") {
 //   cost = 100;
 // }
-// console.log(cost); 
+// console.log(cost);
 
 //---------------------------------
 // проверка на равенство и использование логики
