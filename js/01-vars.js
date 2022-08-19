@@ -1,4 +1,13 @@
 
+// function getEvenNumbers(start, end) {
+//   const newArr = [];
+//   let total = 0;
+//   for (let i = start; i < end.length; i += 1) {
+//   } if (newArr[i] % 2 === 0) {
+//     newArr.push(newArr[i]);
+//   }
+//   return newArr;
+// }
 
 
 
@@ -7,24 +16,67 @@
 
 
 
+const bookShelf = {
+  books: ["The Last Kingdom"],
+  getBooks() {
+    console.log(this);
+  },
+};
 
-
-
-
-function getEvenNumbers(start, end) {
-  const newArr = [];
-  let total = 0;
-  for (let i = start; i < end.length; i += 1) {
-  } if (newArr[i] % 2 === 0) {
-    newArr.push(newArr[i]);
-  }
-  return newArr;
-}
+// Перед точкой стоит объект bookShelf,
+// поэтому при вызове метода, this будет хранить ссылку на него.
+bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 
 
 
 
 
+// ! Объекты - обращение ерез точку
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     name: "Henry",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
+//   },
+// };
+// const ownerName = apartment.owner.name;
+// const ownerPhone = apartment.owner.phone;
+// const ownerEmail = apartment.owner.email;
+// const numberOfTags = apartment.tags.length;
+// const firstTag = apartment.tags[0];
+// const lastTag = apartment.tags[apartment.tags.length - 1];
+// console.log(ownerName)
+
+
+// ! Функции
+
+// ! разворот регистра
+// const changeCase = function (string) {
+//   const letters = string.split('');
+//   let invertedString = '';
+//   for (const letter of letters) {
+//     const isInLowerCase = letter === letter.toLowerCase();
+//     invertedString += isInLowerCase
+//       ? letter.toUpperCase()
+//       : letter.toLowerCase();
+//   }
+// return invertedString
+//   }
+// console.log(changeCase('fidLKfhfL'))
+
+// ! операция (...args)
+// const fn = function (a, b, c, ...args) {
+//   console.log(`${a} ${b} ${c}`);
+//   console.log(args);
+// };
+// fn('hello', 1, 2, 3);
+// fn('aloha', 1, 2, 3, 4, 5);
+// fn('hi', 1, 2, 3, 4, 5, 6, 7);
 
 
 
@@ -51,25 +103,20 @@ function getEvenNumbers(start, end) {
 // }
 // console.log(invertedString)
 
-
-
-// ! Функции
-
 // ! поиск пароля в массиве через for ... of
-const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
-function findLogin(allLogins, loginToFind) {
-  let message = `Пользователь ${loginToFind} не найден.`;
-  for (const login of allLogins) {
-    if (login === loginToFind) {
-      message = `Пользователь ${loginToFind} найден.`;
-    }
-  }
-  return message;
-};
-console.log(findLogin(logins, 'qwerty'));
-console.log(findLogin(logins, 'asdfghjj'));
-console.log(findLogin(logins, 'zxcvbn'));
-
+// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+// function findLogin(allLogins, loginToFind) {
+//   let message = `Пользователь ${loginToFind} не найден.`;
+//   for (const login of allLogins) {
+//     if (login === loginToFind) {
+//       message = `Пользователь ${loginToFind} найден.`;
+//     }
+//   }
+//   return message;
+// };
+// console.log(findLogin(logins, 'qwerty'));
+// console.log(findLogin(logins, 'asdfghjj'));
+// console.log(findLogin(logins, 'zxcvbn'));
 
 // вызов функции 
 // const add = function () {
@@ -241,20 +288,20 @@ console.log(findLogin(logins, 'zxcvbn'));
 // console.log('Total: ', total)
 
 // сумма всех четных числел в массиве через for
-const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
-// 1 переменная total
-let total = 0
-// 2 перебрать массив
-for (let i = 0; i < numbers.length; i += 1) {
-  console.log(numbers[i])
-  //3 на каждой итерации проверить элемент на четность
-  if (numbers[i] % 2 === 0) {  //если нечетное ставим !==
-    // console.log('Четное!!!!')
-    // 4 если четный то плюcуем к total
-// total += numbers[i]
-  }
-}
-console.log('Total: ', total)
+// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
+// // 1 переменная total
+// let total = 0
+// // 2 перебрать массив
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(numbers[i])
+//   //3 на каждой итерации проверить элемент на четность
+//   if (numbers[i] % 2 === 0) {  //если нечетное ставим !==
+//     // console.log('Четное!!!!')
+//     // 4 если четный то плюcуем к total
+// // total += numbers[i]
+//   }
+// }
+// console.log('Total: ', total)
 
 // ! задачи: через for и через for...of
 // //посчитать общую сумму покупок через for...of когда не нужно изменять
