@@ -1,37 +1,103 @@
 
-// function getEvenNumbers(start, end) {
-//   const newArr = [];
-//   let total = 0;
-//   for (let i = start; i < end.length; i += 1) {
-//   } if (newArr[i] % 2 === 0) {
-//     newArr.push(newArr[i]);
-//   }
-//   return newArr;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let result = 0
+// for (let i = 0; i <= 10; i += 1) {
+// result += i
 // }
+// console.log(result)
+
+// let i = 0;
+// let result = 0;
+// while (i <= 10) { // пишем условие, если оно выполняется то тело выполняется
+//     result += i;
+//     i += 1;
+// }
+// console.log(result)
+
+// let i = 0;
+// let result = 0;
+// do {             // условие выполнится 1 раз точно
+//     result += i;
+//     i += 1;
+// } while (i <= 10) 
+// console.log(result)
+
+const userInput = Number(prompt('Введите число', 0));
+let message;
+if (userInput < 0) {
+    message = 'Это отрицательное число"';
+} else if (userInput === 0) {
+    message = 'Это ноль';
+} else {
+    message = 'Это позитивное число'
+}
+alert(message);
 
 
 
+// ?????? Доступ к свойствам в методах
+// const bookShelf = {
+//   books: ["The Last Kingdom"],
+//   getBooks() {
+//     console.log(this);
+//   },
+// };
+// // Перед точкой стоит объект bookShelf,
+// // поэтому при вызове метода, this будет хранить ссылку на него.
+// bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
+
+// const bookShelf = {
+//   books: ["The Last Kingdom"],
+//   getBooks() {
+//     return this.books;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//   },
+//   removeBook(bookName) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     this.books.splice(bookIndex, 1);
+//   },
+// };
+// console.log(bookShelf.getBooks()); // ["The Last Kingdom"]
+// bookShelf.addBook("The Mist");
+// bookShelf.addBook("Dream Guardian");
+// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'The Mist', 'Dream Guardian']
+// bookShelf.removeBook("The Mist");
+// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
 
 
+// ? Объекты------------------------------
 
+// равенство ссылочных типов
+const a = { x: 1, y: 2 };
+const b = a;
+console.log(b === a);
 
+// ! добавление свойств и замена значений (если есть)
+// const playlist = {
+//     name: 'Мой супер плейлист',
+//     rating: 5,
+//     tracks: ['трек-1', 'трек-2', 'трек-3'],
+//     trackCount: 3,
+// };
+// playlist.qwe = 5;
+// playlist.rating = 10;
+// console.log(playlist);
 
-const bookShelf = {
-  books: ["The Last Kingdom"],
-  getBooks() {
-    console.log(this);
-  },
-};
-
-// Перед точкой стоит объект bookShelf,
-// поэтому при вызове метода, this будет хранить ссылку на него.
-bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
-
-
-
-
-
-// ! Объекты - обращение ерез точку
+// ! Объекты - обращение через точку
 // const apartment = {
 //   imgUrl: "https://via.placeholder.com/640x480",
 //   descr: "Spacious apartment in the city center",
@@ -52,8 +118,41 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // const lastTag = apartment.tags[apartment.tags.length - 1];
 // console.log(ownerName)
 
+// const objectA = {
+//     a: 10,
+//     b:true
+// }
+// const copyOfA = objectA
+// copyOfA.a = 'aaaa'
+// copyOfA.b = 'slon'
+// copyOfA.c = 'enot'
+// const copyOfA2 = copyOfA
+// copyOfA2.a = true
+// copyOfA.b = 'lisa'
+// copyOfA.c = 'enot'
+// console.log(copyOfA2)
 
-// ! Функции
+// ! вычисляемые свойства когда ключ - значение переменной
+// const inputName = 'color';
+// const inputValue = 'tomato';
+// const colorPickerData = {
+//     [inputName]: inputValue,
+// }
+// console.log(colorPickerData);
+
+// ! обращение через . и через []
+// const playlist = {
+//     name: 'Мой супер плейлист',
+//     rating: 5,
+//     tracks: ['трек-1', 'трек-2', 'трек-3'],
+//     trackCount: 3,
+// };
+// console.log(playlist.name); // обращение через точку
+// console.log(playlist['name']); // обращен через []
+// const propertyName = 'name';
+// console.log(playlist[propertyName]) // обращение через переменную только через []
+
+// ? Функции----------------------------
 
 // ! разворот регистра
 // const changeCase = function (string) {
@@ -118,6 +217,32 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // console.log(findLogin(logins, 'asdfghjj'));
 // console.log(findLogin(logins, 'zxcvbn'));
 
+// ! передача значения по ссылке без копии объекта (не рекомендуется)
+// const personeOne = {
+//   name: 'Bob',
+//   age: 21,
+// }
+// function inPersAge(person) { // функция мутирует внешний объект
+//   person.age += 1;
+//   return person;
+// }
+// inPersAge(personeOne);  // передача ссылки на объект памяти
+// console.log(personeOne);
+
+// ! Изменение объекта внури функции через копию объекта
+// const personeOne = {
+//   name: 'Bob',
+//   age: 21,
+// }
+// function inPersAge(person) { 
+//   const updatedPerson = Object.assign({}, person) //создание копии объекта
+//   updatedPerson.age += 1;
+//   return updatedPerson;
+// }
+// const updatedPersonOne = inPersAge(personeOne);  
+// console.log(personeOne.age);
+// console.log(updatedPersonOne.age);
+
 // вызов функции 
 // const add = function () {
 //   console.log('выполняется функция');
@@ -126,28 +251,78 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // add();
 // add();
 
+// function myFn(a, b) {
+//   let c;
+//   a = a + 1;
+//   c = a + b;
+//   return c;
+// } 
+// console.log(myFn(10, 3));
 
-// ! массивы
 
-// function filterArray(numbers, value) {
-//   const newNumbers = [];                         // создали новый массив
-//   for (let i = 0; i < numbers.length; i += 1) {  // задали цикл на длину старого массива
-//     if (numbers[i] > value) {                    // если число в старом массиве больше чем value 
-//     newNumbers.push(numbers[i]);                 // то оно вставляется в новый массив
-//     }
-//   }
-//   return newNumbers;
-// }
-
-// поиск самого маленького числа в массиве
-// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82];
-// let smallestNumber = numbers[0];
-// for (const number of numbers) {
-//   if (number < smallestNumber) {
-//     smallestNumber = number
+//----------------------
+// Функция
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('А родители разрешили?');
 //   }
 // }
-//   console.log(`smallestNumber: `, smallestNumber);
+// console.log(checkAge(22))
+
+// function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
+//   const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
+//   const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
+//   return message;
+// }
+
+// function calculateTotalPrice (orderedQuantity, pricePerItem) {
+//   const totalPrice = orderedQuantity * pricePerItem;
+//   return totalPrice;
+// };
+
+// function makeMessage(name, price) {
+//   const message =`You picked ${name}, price per item is ${price} credits`;
+//   return message;
+// };
+
+// function add(a, b, c) {
+// return a + b + c;
+// }
+// add(2, 5, 8); // 15
+// console.log(add(15, 27, 10));
+// console.log(add(10, 20, 30));
+// console.log(add(5, 10, 15));
+
+// function add(a, b, c) {
+//   console.log(`Addition result equals ${a + b + c}`);
+// }
+// add(15, 27, 10);
+// add(10, 20, 30);
+// add(5, 10, 15);
+
+// function sayHi() {
+//   console.log("Hello, this is my first function!");
+// }
+// sayHi(); //-без этого текст не выводится
+
+// function getNameLength(name) {
+//   const message = `Name ${name} is ${name.length} characters long`;
+//   return message;
+// }
+// console.log(getNameLength("Poly"));
+
+//---------------------------
+//замена значения
+// function a() {
+//     console.log('Hello')
+// }
+// a()
+// a = 10
+// console.log(a)
+
+// ? массивы------------------------------------------
 
 // ! split переводит строку в массив и разбивает слово на буквы
 // const friends = 'Mango';
@@ -236,6 +411,12 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // string = string.slice(0, string.length - 2);
 // console.log(string);
 
+// ! forEach в массиве - ничего не возвращает (underfined), массив не меняется
+// const myArray = [1, 2, 3];
+// console.log(myArray);
+// myArray.forEach(el => console.log(el * 2));
+// console.log(myArray);
+
 // ! concat объединение и сумма элементов двух массивом через concat и for ... of
 // const array1 = [5, 10, 15, 20];
 // const array2 = [10, 20, 30];
@@ -246,7 +427,28 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 //   total += number;
 //   console.log(total);
 // }
-// ! For ... of
+
+
+
+// ?-----------------------------------
+
+// ! for ... of
+// поиск самого маленького числа в массиве
+// const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82];
+// let smallestNumber = numbers[0];
+// for (const number of numbers) {
+//   if (number < smallestNumber) {
+//     smallestNumber = number
+//   }
+// }
+//   console.log(`smallestNumber: `, smallestNumber);
+
+// for of для массива???????????????
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// for (const friend of friends) {  // объявление имени переменной (внутри скобок)
+// console.log(friend)
+// }
+
 // function findLongestWord(string) {
 //   let newArr = string.split(' ');
 //   let longestWord = newArr[0];
@@ -258,18 +460,106 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 //   return longestWord
 // }
 
-// ! поиск логина через for ... if
-// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
-// const loginToFind = 'qwerty';
-// let message = `Пользователь ${loginToFind} не найден.`;
-// for (let i = 0; i < logins.length; i += 1) {
-//   const login = logins[i];
-//   if (login === loginToFind) {
-//     message = `Пользователь ${loginToFind} найден.`
-//     break;//   прерывание - вместо else
-//   }
+// ! цикл for ... in для массивов
+// const myArray = [true, 10, 'abc', null];
+// for (const key in myArray) {
+//   console.log(myArray[key])
+// };
+
+// ! цикл for ... in для объектов
+// const myObject = {
+//   x: 10,
+//   y: true,
+//   z: 'abc'
+// };
+// for (const key in myObject) {
+//   console.log(key, myObject[key])
+// };
+
+// const myObject = {
+//   x: 10,
+//   y: true,
+//   z: 'abc'
+// };
+// for (const key in myObject) {
+//   console.log(key, myObject)
+// };
+
+// ! цикл while
+// let counter = 5;
+// while (counter < 15) {
+//   counter += 2;
+//   console.log("counter: ", counter);
 // }
-// console.log(message);
+
+// let clientCounter = 18;
+// const maxClients = 25;
+// while (clientCounter < maxClients) {
+//   clientCounter += 1;
+//   console.log(clientCounter);
+// }
+
+//! Object.keys  Object.values + forEach Получение массива из объекта (Ключи и значения)
+// const myObject = {
+//   x: 10,
+//   y: true,
+//   z: 'abc'
+// };
+// Object.keys(myObject).forEach(key => {
+//   console.log(key, myObject[key])
+// })
+
+// const myObject = {
+//   x: 10,
+//   y: true,
+//   z: 'abc'
+// };
+// Object.values(myObject).forEach(values => {
+//   console.log(values)
+// })
+
+// ! цикл forEach лучше чем for 
+// const myArray = ['first', 'second', 'third'];
+// myArray.forEach((element, index) => {
+//   console.log(element, index);
+// });
+
+// ! Цикл for с использ if 
+//??????    continue
+// Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
+// и управление передаётся на следующую итерацию.
+// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
+// const threshold = 15;
+// for (let i = 0; i < numbers.length; i += 1) {
+//   if (numbers[i] < threshold) {
+//     continue;
+//   }
+//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
+// }
+
+// const min = 0;
+// const max = 20;
+// let total = 0;
+// for (let i = min; i <= max; i += 1) {
+//   if (i % 2 !== 0) {
+//     console.log(`Не четное: `, i);
+//     continue;
+//   }
+//   console.log(`четное: `, i);
+//   total += i;
+// }
+// console.log(`total: `, total);
+
+// ! Цикл for 
+// function filterArray(numbers, value) {
+//   const newNumbers = [];                         // создали новый массив
+//   for (let i = 0; i < numbers.length; i += 1) {  // задали цикл на длину старого массива
+//     if (numbers[i] > value) {                    // если число в старом массиве больше чем value 
+//     newNumbers.push(numbers[i]);                 // то оно вставляется в новый массив
+//     }
+//   }
+//   return newNumbers;
+// }
 
 //  сумма всех четных числел в массиве через for
 // const numbers = [4, 6, 8, 55, 3, 18, 9, 99, 45, 67, 82]
@@ -303,15 +593,6 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // }
 // console.log('Total: ', total)
 
-// ! задачи: через for и через for...of
-// //посчитать общую сумму покупок через for...of когда не нужно изменять
-// const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
-// let total = 0
-// for (const value of cart) {
-//   total += value
-// }
-// console.log('Total: ', total)
-
 //посчитать общую сумму покупок через for
 // const cart = [54, 66, 84, 102, 67, 85, 88, 93, 78, 99]
 // // 2 сделать переменную total для цикла
@@ -324,80 +605,19 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // }
 // console.log('Total: ', total)
 
-// for of для массива???????????????
-// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// for (const friend of friends) {  // объявление имени переменной (внутри скобок)
-// console.log(friend)
-// }
-
-//--------------------------
-//for  для массива???????????????
-// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// console.log(friends);
-// for (let i = 0; i < friends.length; i += 1) {
-//   friends[i] += '--1';
-// }
-// console.log(friends)
-
-//???????????????????????
-// Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
-// и управление передаётся на следующую итерацию.
-// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
-// const threshold = 15;
-// for (let i = 0; i < numbers.length; i += 1) {
-//   if (numbers[i] < threshold) {
-//     continue;
+// ! поиск логина через for и  if
+// const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
+// const loginToFind = 'qwerty';
+// let message = `Пользователь ${loginToFind} не найден.`;
+// for (let i = 0; i < logins.length; i += 1) {
+//   const login = logins[i];
+//   if (login === loginToFind) {
+//     message = `Пользователь ${loginToFind} найден.`
+//     break;//   прерывание - вместо else
 //   }
-//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
 // }
+// console.log(message);
 
-// ! не массивы
-
-// function getNameLength(name) {
-//   const message = `Name ${name} is ${name.length} characters long`;
-//   return message;
-// }
-// console.log(getNameLength("Poly"));
-
-//---------------------------
-//замена значения
-// function a() {
-//     console.log('Hello')
-// }
-// a()
-// a = 10
-// console.log(a)
-
-//ссылочный тип
-// const objectA = {
-//     a: 10,
-//     b:true
-// }
-// const copyOfA = objectA
-// copyOfA.a = 'aaaa'
-// copyOfA.b = 'slon'
-// copyOfA.c = 'enot'
-// const copyOfA2 = copyOfA
-// copyOfA2.a = true
-// copyOfA.b = 'lisa'
-// copyOfA.c = 'enot'
-// console.log(copyOfA2)
-
-//??????????????????
-// const min = 0;
-// const max = 20;
-// let total = 0;
-// for (let i = min; i <= max; i += 1) {
-//   if (i % 2 !== 0) {
-//     console.log(`Не четное: `, i);
-//     continue;
-//   }
-//   console.log(`четное: `, i);
-//   total += i;
-// }
-// console.log(`total: `, total);
-
-//???????????????
 // const minSalary = 500;
 // const maxSalary = 5000;
 // const empLoyees = 6;
@@ -411,26 +631,21 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 //   console.log(`totalSalary: `, totalSalary);
 // }
 
-// for (let i = 20; i < 50; i += 3) {
-//   console.log(i);
-// }
-// console.log(`gjfjfjhfjh`);
-
-//------------------------------
-// ? 2 примера цикла while
-// let counter = 5;
-// while (counter < 15) {
-//   console.log("counter: ", counter);
-//   counter += 2;
-// }
-// let clientCounter = 18;
-// const maxClients = 25;
-// while (clientCounter < maxClients) {
-//   console.log(clientCounter);
-//   clientCounter += 1;
+// const myArray = ['first', 'second', 'third']
+// for (let i = 0; i < myArray.length; i += 1) {
+//   console.log(myArray[i]);
 // }
 
-// ? Switch
+//--------------------------
+//for  для массива???????????????
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// console.log(friends);
+// for (let i = 0; i < friends.length; i += 1) {
+//   friends[i] += '--1';
+// }
+// console.log(friends)
+
+// ! Switch
 // function checkPassword(password) {
 //   const ADMIN_PASSWORD = "jqueryismyjam";
 //   let message;
@@ -443,7 +658,7 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 //       break;
 //       default: message = "Access denied, wrong password!";
 //   }
-//   return message;
+//   return message; 
 // }
 
 // function getSubscriptionPrice(type) {
@@ -462,60 +677,16 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 //   return price;
 // }
 
-//----------------------
-// Функция
-// function checkAge(age) {
-//   if (age > 18) {
-//     return true;
-//   } else {
-//     return confirm('А родители разрешили?');
-//   }
-// }
-
-// function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
-//   const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
-//   const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
-//   return message;
-// }
-
-// function calculateTotalPrice (orderedQuantity, pricePerItem) {
-//   const totalPrice = orderedQuantity * pricePerItem;
-//   return totalPrice;
-// };
-
-// function makeMessage(name, price) {
-//   const message =`You picked ${name}, price per item is ${price} credits`;
-//   return message;
-// };
-
-// function add(a, b, c) {
-// return a + b + c;
-// }
-// add(2, 5, 8); // 15
-// console.log(add(15, 27, 10));
-// console.log(add(10, 20, 30));
-// console.log(add(5, 10, 15));
-
-// function add(a, b, c) {
-//   console.log(`Addition result equals ${a + b + c}`);
-// }
-// add(15, 27, 10);
-// add(10, 20, 30);
-// add(5, 10, 15);
-
-// function sayHi() {
-//   console.log("Hello, this is my first function!");
-// }
-// sayHi(); //-без этого текст не выводится
-
-//------------------------------
 // ! тернарный оператор
 
 // const balance = -1000;
 // const messege = balance >= 0 ? 'Позитивный баланс' : 'Негативный баланс';
 // console.log(messege);
 
-//-----------------------------
+// let value = -5;
+// const res = value >= 0 ? value : -value;
+// console.log(res)
+
 // ! if else if-else
 
 // const salary = 12500;
@@ -546,7 +717,7 @@ bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 // }
 // console.log(cost);
 
-//---------------------------------
+//? строки -----------------------------------------
 // проверка на равенство и использование логики
 
 // const sub = 'pro';
