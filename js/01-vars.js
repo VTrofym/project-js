@@ -1,49 +1,58 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let result = 0
-// for (let i = 0; i <= 10; i += 1) {
-// result += i
+// ! узнаем количество свойст через количество собственных ключей
+// ? почему в условии let propCount = 0
+// function countProps(object) {
+//   let propCount = 0;
+//   for (const key in object) {
+//     if (object.hasOwnProperty(key)) {
+//       propCount += 1;
+//     }
+//   }
+//   return propCount;
 // }
-// console.log(result)
+// console.log(countProps({ name: "Mango", age: 2 }))
 
-// let i = 0;
-// let result = 0;
-// while (i <= 10) { // пишем условие, если оно выполняется то тело выполняется
-//     result += i;
-//     i += 1;
+// ?----------------------
+// const products = [
+//   { name: "Radar", price: 1300, quantity: 4 },
+//   { name: "Scanner", price: 2700, quantity: 3 },
+//   { name: "Droid", price: 400, quantity: 7 },
+//   { name: "Grip", price: 1200, quantity: 9 },
+// ];
+// function getAllPropValues(propName) {
+//   const arrAllValues = []; 
+//   for (const product of products) {
+//     if (product.hasOwnProperty(propName)) {
+//       arrAllValues.push(product[propName]);
+//     }
+//   }
+//   return arrAllValues;
 // }
-// console.log(result)
 
-// let i = 0;
-// let result = 0;
-// do {             // условие выполнится 1 раз точно
-//     result += i;
-//     i += 1;
-// } while (i <= 10) 
-// console.log(result)
 
-const userInput = Number(prompt('Введите число', 0));
-let message;
-if (userInput < 0) {
-    message = 'Это отрицательное число"';
-} else if (userInput === 0) {
-    message = 'Это ноль';
-} else {
-    message = 'Это позитивное число'
-}
-alert(message);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -78,24 +87,207 @@ alert(message);
 // bookShelf.removeBook("The Mist");
 // console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
 
-
-// ? Объекты------------------------------
+// * Объекты------------------------------
 
 // равенство ссылочных типов
-const a = { x: 1, y: 2 };
-const b = a;
-console.log(b === a);
+// const a = { x: 1, y: 2 };
+// const b = a;
+// console.log(b === a);
 
-// ! добавление свойств и замена значений (если есть)
-// const playlist = {
-//     name: 'Мой супер плейлист',
-//     rating: 5,
-//     tracks: ['трек-1', 'трек-2', 'трек-3'],
-//     trackCount: 3,
+
+const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+function getProductPrice(productName) {
+for (const product of products) {
+  if (product.name === productName) {
+  return product.price;
+  }
+}
+  return null;
+}
+console.log(getProductPrice("Grip"))
+
+// ! ищем по одному значению, и возвращаем другое значение 
+// const products = [
+//   { name: "Radar", price: 1300, quantity: 4 },
+//   { name: "Scanner", price: 2700, quantity: 3 },
+//   { name: "Droid", price: 400, quantity: 7 },
+//   { name: "Grip", price: 1200, quantity: 9 },
+// ];
+// function getProductPrice(productName) {
+// for (const product of products) {
+//   if (product.name === productName) {
+//   return product.price;
+//   }
+// }
+//   return null;
+// }
+// console.log(getProductPrice("Grip"))
+
+// ! перебор массива объектов, достали значения for...of
+// const colors = [
+//   { hex: "#f44336", rgb: "244,67,54" },
+//   { hex: "#2196f3", rgb: "33,150,243" },
+//   { hex: "#4caf50", rgb: "76,175,80" },
+//   { hex: "#ffeb3b", rgb: "255,235,59" },
+// ];
+// const hexColors = [];
+// const rgbColors = [];
+// for (const color of colors) {
+//   hexColors.push(color.hex);
+//   rgbColors.push(color.rgb)
+// }
+
+//! Object.keys() достали массив ключей, и от него достали значение через for...of
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
 // };
-// playlist.qwe = 5;
-// playlist.rating = 10;
-// console.log(playlist);
+// const values = [];
+// const keys = Object.keys(apartment);
+// for (const key of keys) {
+//   values.push(apartment[key])
+// }
+// console.log(values)
+
+//! проверка через hasOwnProperty и достаем свои ключи и значения
+// const keys = [];
+// const values = [];
+// const advert = {
+//   service: "apt",
+// };
+// const apartment = Object.create(advert);
+// console.log(apartment)
+// apartment.descr = "Spacious apartment in the city center";
+// apartment.rating = 4;
+// apartment.price = 2153;
+
+// for (const key in apartment) {
+//   if (apartment.hasOwnProperty(key))
+//     keys.push(key);
+//   if (apartment.hasOwnProperty(key))
+//   values.push(apartment[key]);
+// }
+
+//! достаем ключи и значения из объекта в массив через for...in
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+// const keys = [];
+// const values = [];
+// for (const item in apartment) {
+//   keys.push(item)              // достаем ключи
+//   values.push(apartment[item]) // достаем значения
+// }
+// console.log(keys)
+// console.log(values)
+
+// ! Синтаксис вычисляемых свойств
+// const emailInputName = "email";      //переменная дает имя (ключ) свойству
+// const passwordInputName = "password";//переменная дает имя (ключ) свойству
+// const credentials = {
+//   [emailInputName]: "henry.carter@aptmail.com",//используем переменную если не знаем имя свойства
+//   [passwordInputName]: "jqueryismyjam",//используем переменную если не знаем имя свойства
+// };
+// console.log(credentials.email)   // вызов ключа через переменную
+// console.log(credentials.password)// вызов ключа через переменную
+
+// ! синтаксис коротких свойств
+// const name = "Repair Droid";
+// const price = 2500;
+// const image = "https://via.placeholder.com/640x480";
+// const tags = ["on sale", "trending", "best buy"];
+
+// const product = {
+// name,
+// price,
+// image,
+// tags,
+// };
+// console.log(name);
+// console.log(price);
+// console.log(image)
+// console.log(tags)
+
+// ! обращение к свойствам
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     name: "Henry",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
+//   },
+// };
+// const ownerName = apartment.owner.name;
+// const ownerPhone = apartment.owner.phone;
+// const ownerEmail = apartment.owner.email;
+// const numberOfTags = apartment.tags.length;
+// const firstTag = apartment.tags[0];
+// const lastTag = apartment.tags[apartment.tags.length-1];
+
+// ! обращение к свойствам через []
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+// };
+// const aptRating = apartment['rating'];
+// const aptDescr = apartment['descr'];
+// const aptPrice = apartment['price'];
+// const aptTags = apartment['tags'];
+
+// ! замена свойств
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     name: "Henry",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
+//   },
+// };
+// apartment.price = 5000;
+// apartment.rating = 4.7;
+// apartment.owner.name = "Henry Sibola";
+// apartment.tags.push("trusted");
+
+// ! добавление свойств
+
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4.7,
+//   price: 5000,
+//   tags: ["premium", "promoted", "top", "trusted"],
+//   owner: {
+//     name: "Henry Sibola",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
+//   },
+// };
+// apartment.area = 60;
+// apartment.rooms = 3;
+// apartment.location = {
+//   country: "Jamaica",
+//   city: "Kingston",
+// };
+// console.log(apartment)
 
 // ! Объекты - обращение через точку
 // const apartment = {
@@ -152,7 +344,54 @@ console.log(b === a);
 // const propertyName = 'name';
 // console.log(playlist[propertyName]) // обращение через переменную только через []
 
-// ? Функции----------------------------
+// * Функции----------------------------
+
+// ! приоритетность вывода в консоль у функций
+// function bar () {
+//   console.log("bar")
+// }
+
+// function baz () {
+//   console.log("baz")
+// }
+// function foo () {
+//   console.log("foo")
+//   bar()
+//   baz()
+// }
+// foo()
+
+// function multiply(x, y, z) {
+//   console.log("Код до return выполняется как обычно");
+//   // Возвращаем результат выражения умножения
+//   return x * y * z;
+//   console.log("Этот лог никогда не выполнится, он стоит после return");
+// }
+// console.log(multiply(2, 3, 3))
+// // Результат работы функции можно сохранить в переменную
+// let result = multiply(2, 3, 5);
+// console.log(result); // 30
+// result = multiply(4, 8, 12);
+// console.log(result); // 384
+// result = multiply(17, 6, 25);
+// console.log(result); // 255
+
+// let i
+// function multiply(x, y, z) {
+//   return i = `Результат умножения равен ${x * y * z}`
+// }
+// console.log(multiply(4, 8, 2))
+
+// function count(countFrom = 0, countTo = 10, step = 1) {
+//   console.log(`countFrom = ${countFrom}, countTo = ${countTo}, step = ${step}`);
+//   for (let i = countFrom; i <= countTo; i += step) {
+//     console.log(i);
+//   }
+// }
+// count(1, 5); // countFrom = 1, countTo = 5, step = 1
+
+// count(2); // countFrom = 2, countTo = 10, step = 1
+// count(); // countFrom = 0, countTo = 10, step = 1
 
 // ! разворот регистра
 // const changeCase = function (string) {
@@ -176,8 +415,6 @@ console.log(b === a);
 // fn('hello', 1, 2, 3);
 // fn('aloha', 1, 2, 3, 4, 5);
 // fn('hi', 1, 2, 3, 4, 5, 6, 7);
-
-
 
 // const friends = 'Mango';
 // console.log(friends.split(''));
@@ -234,16 +471,16 @@ console.log(b === a);
 //   name: 'Bob',
 //   age: 21,
 // }
-// function inPersAge(person) { 
+// function inPersAge(person) {
 //   const updatedPerson = Object.assign({}, person) //создание копии объекта
 //   updatedPerson.age += 1;
 //   return updatedPerson;
 // }
-// const updatedPersonOne = inPersAge(personeOne);  
+// const updatedPersonOne = inPersAge(personeOne);
 // console.log(personeOne.age);
 // console.log(updatedPersonOne.age);
 
-// вызов функции 
+// вызов функции
 // const add = function () {
 //   console.log('выполняется функция');
 // };
@@ -256,9 +493,8 @@ console.log(b === a);
 //   a = a + 1;
 //   c = a + b;
 //   return c;
-// } 
+// }
 // console.log(myFn(10, 3));
-
 
 //----------------------
 // Функция
@@ -322,7 +558,7 @@ console.log(b === a);
 // a = 10
 // console.log(a)
 
-// ? массивы------------------------------------------
+// * массивы------------------------------------------
 
 // ! split переводит строку в массив и разбивает слово на буквы
 // const friends = 'Mango';
@@ -370,12 +606,21 @@ console.log(b === a);
 // ! unshift добавляет элементы в начало массива
 // const numbers = [65676];
 // console.log(numbers);
-// numbers.unshift(1);
+// numbers.unshift(4, 7);
 // console.log(numbers);
+
+// ! reverse 
+// const numbers = [1, 2, 3, 4, 5];
+// const reverseNumber = numbers.reverse()
+// console.log(numbers)
+
+// const numbers = [111, 222, 333, 444, 555];
+// const reverseNumber = numbers.reverse()
+// console.log(numbers)
 
 // ! pop удаляет последний элемент из конца массива
 // const numbers = [1, 2, 3, 4, 5];
-// console.log(numbers.pop());
+// console.log(numbers.pop())
 // console.log(numbers);
 // console.log(numbers.pop());
 // console.log(numbers);
@@ -402,6 +647,11 @@ console.log(b === a);
 // const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
 // console.log(clients.slice(-2));
 
+// ! splice 
+// const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
+// const deleteFriends = friends.splice(9, 0, '6')
+// console.log(friends);
+
 // ! slice объединение элементов в 1 строку string с отрезанием конца
 // const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
 // let string = '';
@@ -420,15 +670,17 @@ console.log(b === a);
 // ! concat объединение и сумма элементов двух массивом через concat и for ... of
 // const array1 = [5, 10, 15, 20];
 // const array2 = [10, 20, 30];
+// const array3 = [10, 20, 30];
 // let total = 0;
-// const numbers = array1.concat(array2);
+// const numbers = array1.concat(array2, array3);
 // console.log(numbers);
 // for (const number of numbers) {
 //   total += number;
 //   console.log(total);
 // }
-
-
+// console.log(total)
+// console.log(array1);
+// console.log(array2);
 
 // ?-----------------------------------
 
@@ -518,13 +770,13 @@ console.log(b === a);
 //   console.log(values)
 // })
 
-// ! цикл forEach лучше чем for 
+// ! цикл forEach лучше чем for
 // const myArray = ['first', 'second', 'third'];
 // myArray.forEach((element, index) => {
 //   console.log(element, index);
 // });
 
-// ! Цикл for с использ if 
+// ! Цикл for с использ if
 //??????    continue
 // Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
 // и управление передаётся на следующую итерацию.
@@ -550,11 +802,11 @@ console.log(b === a);
 // }
 // console.log(`total: `, total);
 
-// ! Цикл for 
+// ! Цикл for
 // function filterArray(numbers, value) {
 //   const newNumbers = [];                         // создали новый массив
 //   for (let i = 0; i < numbers.length; i += 1) {  // задали цикл на длину старого массива
-//     if (numbers[i] > value) {                    // если число в старом массиве больше чем value 
+//     if (numbers[i] > value) {                    // если число в старом массиве больше чем value
 //     newNumbers.push(numbers[i]);                 // то оно вставляется в новый массив
 //     }
 //   }
@@ -658,7 +910,7 @@ console.log(b === a);
 //       break;
 //       default: message = "Access denied, wrong password!";
 //   }
-//   return message; 
+//   return message;
 // }
 
 // function getSubscriptionPrice(type) {
@@ -717,7 +969,7 @@ console.log(b === a);
 // }
 // console.log(cost);
 
-//? строки -----------------------------------------
+// * строки -----------------------------------------
 // проверка на равенство и использование логики
 
 // const sub = 'pro';
