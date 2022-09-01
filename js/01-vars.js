@@ -1,4 +1,3 @@
-
 // ! узнаем количество свойст через количество собственных ключей
 // ? почему в условии let propCount = 0
 // function countProps(object) {
@@ -20,7 +19,7 @@
 //   { name: "Grip", price: 1200, quantity: 9 },
 // ];
 // function getAllPropValues(propName) {
-//   const arrAllValues = []; 
+//   const arrAllValues = [];
 //   for (const product of products) {
 //     if (product.hasOwnProperty(propName)) {
 //       arrAllValues.push(product[propName]);
@@ -36,6 +35,37 @@
 
 
 
+// const sum = (a, b) => a + b;
+// const dif = (a, b) => a - b;
+// const multiply = (a, b) => a * b;
+// const cube = a => a ** 3;
+// function calculate(operand, callback) {
+//   return callback(...operand)
+// }
+// console.log(calculate([4,4], multiply))
+
+// const queue = [
+//  {type: 'robot'},
+//  {type: 'robot'},
+//  {type: 'robot'},
+//  {type: 'dog'},
+//  {type: 'robot'},
+// ]
+// const isRobot = (robot) => {
+//   if (robot.type === 'robot') {
+//     return true
+//   }
+//   return false
+// }
+// function processArr(arr, callback) {
+//   const newArr = [];
+//   for (const el of arr) {
+//   newArr.push(callback(el))
+// }
+//   // arr.forEach(element => newArr.push(callback(el))); // или 
+//   return newArr
+// }
+// console.log(processArr(queue, isRobot))
 
 
 
@@ -52,9 +82,35 @@
 
 
 
+// function processCall(recipient, onAvailable, onNotAvailable) {
+//   // Имитируем доступеность абонента случайным числом
+//   const isRecipientAvailable = Math.random() > 0.5;
 
+//   if (!isRecipientAvailable) {
+//     onNotAvailable(recipient);
+//     return;
+//   }
 
+//   onAvailable(recipient);
+// }
 
+// function takeCall(name) {
+//   console.log(`Соединяем с ${name}, ожидайте...`);
+//   // Логика принятия звонка
+// }
+
+// function activateAnsweringMachine(name) {
+//   console.log(`Абонент ${name} недоступен, оставьте сообщение.`);
+//   // Логика активации автоответчика
+// }
+
+// function leaveHoloMessage(name) {
+//   console.log(`Абонент ${name} недоступен, записываем голограмму.`);
+//   // Логика записи голограммы
+// }
+
+// processCall("Mango", takeCall, activateAnsweringMachine);
+// processCall("Poly", takeCall, leaveHoloMessage);
 
 // ?????? Доступ к свойствам в методах
 // const bookShelf = {
@@ -87,6 +143,513 @@
 // bookShelf.removeBook("The Mist");
 // console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
 
+// Как объявить параметры функции так,
+// чтобы можно было передать любое кол-во аргументов?
+
+// ?задача корзина товаров по объектам
+// const cart = {
+//   items: [],
+//   getItems() {
+//     return this.items;
+//   },
+//   add(product) {
+//     this.items.push(product)
+//   },
+//   remove(productName) {
+//     const {items } = this
+//     for (let i = 0; i < items.length; i += 1) {
+//       const {name} = items[i]
+//       if (productName === name){
+//         console.log('нашли такой продукт ', productName);
+//         console.log('индекс: ', i);
+//         items.splice(i, 1);
+//     }
+//     }
+//   },
+//   clear() {
+//     this.items = []
+//   },
+//   countTotalPrice() {
+//     const { items } = this;
+//     let total = 0;
+//     for (const {price} of items) {
+//       total += price;
+//     }
+//     return total;
+//   },
+//   increaseQuantity(productName) { },
+//   descreaseQuantity(productName) { },
+// };
+// console.log(cart.getItems());
+// cart.add({ name: 'apple', price: 50 });
+// cart.add({ name: 'limon', price: 60 });
+// cart.add({ name: 'limon', price: 60 });
+// cart.add({ name: 'strewberry', price: 110 });
+// console.table(cart.getItems());
+// console.log('Tottal: ', cart.countTotalPrice())
+// cart.remove('limon');
+// console.table(cart.getItems())
+// cart.clear();
+// console.log(cart.getItems());
+//*----------Перебирающие методы массива
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! Продвинутый reduce
+
+// ! Метод reduce() сумма числе в массиве
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Поли", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Киви", score: 94 },
+//   { name: "Хьюстон", score: 64 },
+// ];
+// // Название аккумулятора может быть произвольным, это просто параметр функции
+// const totalScore = students.reduce((total, student) => {
+//   return total + student.score;
+// }, 0);
+// const averageScore = totalScore / students.length;
+
+// const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+//   return previousValue + number;
+// }, 0);
+// console.log(total); // 32
+
+//! Метод some() Метод every() массив объектов
+// const fruits = [
+//   { name: "apples", amount: 100 },
+//   { name: "bananas", amount: 0 },
+//   { name: "grapes", amount: 50 },
+// ];
+// // every вернет true только если всех фруктов будет больше чем 0 штук
+// const allAvailable = fruits.every(fruit => fruit.amount > 0); // false
+// // some вернет true если хотябы одного фрукта будет больше чем 0 штук
+// const anyAvailable = fruits.some(fruits => fruits.amount > 0); // true
+
+//! Метод some()
+// // Есть хотя бы один элемент больше либо равный нулю? - да
+// [1, 2, 3, 4, 5].some(value => value >= 0); // true
+// // Есть хотя бы один элемент больше либо равный нулю? - да
+// [-7, -20, 3, -10, -14].some(value => value >= 0); // true
+// // Есть хотя бы один элемент меньше нуля? - нет
+// [1, 2, 3, 4, 5].some(value => value < 0); // false
+// // Есть хотя бы один элемент меньше нуля? - да
+// [1, 2, 3, -10, 4, 5].some(value => value < 0); // true
+
+// ! Метод every()
+// // Все элементы больше либо равны нулю? - да
+// [1, 2, 3, 4, 5].every(value => value >= 0); // true
+// // Все элементы больше либо равны нулю? - нет
+// [1, 2, 3, -10, 4, 5].every(value => value >= 0); // false
+
+// ! Метод findIndex()
+// const colorPickerOptions = [
+//   { label: "red", color: "#F44336" },
+//   { label: "green", color: "#4CAF50" },
+//   { label: "blue", color: "#2196F3" },
+//   { label: "pink", color: "#E91E63" },
+//   { label: "indigo", color: "#3F51B5" },
+// ];
+// colorPickerOptions.findIndex(option => option.label === "blue"); // 2
+// colorPickerOptions.findIndex(option => option.label === "pink"); // 3
+// colorPickerOptions.findIndex(option => option.label === "white"); // -1
+
+// ! Метод find()
+// const colorPickerOptions = [
+//   { label: "red", color: "#F44336" },
+//   { label: "green", color: "#4CAF50" },
+//   { label: "blue", color: "#2196F3" },
+//   { label: "pink", color: "#E91E63" },
+//   { label: "indigo", color: "#3F51B5" },
+// ];
+// colorPickerOptions.find(option => option.label === "blue"); // { label: 'blue', color: '#2196F3' }
+// colorPickerOptions.find(option => option.label === "pink"); // { label: 'pink', color: '#E91E63' }
+// colorPickerOptions.find(option => option.label === "white"); // undefined
+// console.log(colorPickerOptions)
+
+//! Метод filter() прописанный в декларативе
+const numbers = [1, 2, 3, 4, 5];
+const func = (el) => el > 3
+numbers.filter = function (callback) {
+    const newArr = []
+    for (let i = 0; i < this.length; i += 1) {
+        const shouldBeAdded = callback(this[i], i, this)
+        if (shouldBeAdded) {
+            newArr[newArr.length] = this[i]
+        }   
+    }
+    return newArr
+}
+console.log(numbers.filter(func))
+console.log(numbers)
+
+//! Метод filter() массив объектов
+// const LOW_SCORE = 50;
+// const HIGH_SCORE = 80;
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Поли", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Киви", score: 94 },
+//   { name: "Хьюстон", score: 64 },
+// ];
+// const best = students.filter(student => student.score >= HIGH_SCORE);
+// console.log(best); // Массив объектов с именами Манго и Киви
+// const worst = students.filter(student => student.score < LOW_SCORE);
+// console.log(worst); // Массив с одним объектом Аякс
+// // В коллбек-функции удобно деструктуризировать свойства объекта
+// const average = students.filter(
+//   ({ score }) => score >= LOW_SCORE && score < HIGH_SCORE
+// );
+// console.log(average); // Массив объектов с именами Поли и Хьюстон
+
+// const getUsersWithEyeColor = (users, color) => {
+//   users.filter(eyeColor => user.eyeColor === eyeColor);
+// };
+
+//! Метод filter() уникальные элементы(без повторений)
+// const students = [
+//   { name: "Манго", courses: ["математика", "физика"] },
+//   { name: "Поли", courses: ["информатика", "математика"] },
+//   { name: "Киви", courses: ["физика", "биология"] },
+// ];
+// const allCourses = students.flatMap(student => student.courses);
+// console.log(allCourses)
+// const uniqueCourses = allCourses.filter(
+//   (course, index, array) => array.indexOf(course) === index
+// );
+// console.log(uniqueCourses)
+
+//! Метод filter()
+// const values = [51, -3, 27, 21, -68, 42, -37];
+// const positiveValues = values.filter(value => value >= 0);
+// console.log(positiveValues); // [51, 27, 21, 42]
+// const negativeValues = values.filter(value => value < 0);
+// console.log(negativeValues); // [-3, -68, -37]
+// const bigValues = values.filter(value => value > 1000);
+// console.log(bigValues); // []
+// // Оригинальный массив не изменился
+// console.log(values); // [51, -3, 27, 21, -68, 42, -37]
+
+// ! Метод flatMap()
+// const students = [
+//   { name: "Манго", courses: ["математика", "физика"] },
+//   { name: "Поли", courses: ["информатика", "математика"] },
+//   { name: "Киви", courses: ["физика", "биология"] },
+// ];
+// students.map(student => student.courses);
+// // [['математика', 'физика'], ['информатика', 'математика'], ['физика', 'биология']]
+// students.flatMap(student => student.courses);
+// // ['математика', 'физика', 'информатика', 'математика', 'физика', 'биология'];
+
+//! Метод map()
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Поли", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Киви", score: 94 },
+//   { name: "Хьюстон", score: 64 },
+// ];
+
+// const names = students.map(student => student.name);
+// console.log(names); // ['Манго', 'Поли', 'Аякс', 'Киви', 'Хьюстон']
+// const planets = ["Земля", "Марс", "Венера", "Юпитер"];
+// const planetsInUpperCase = planets.map(planet => planet.toUpperCase());
+// const planetsInLowerCase = planets.map(planet => planet.toLowerCase());
+// console.log(planetsInUpperCase); // ['ЗЕМЛЯ', 'МАРС', 'ВЕНЕРА', 'ЮПИТЕР']
+// console.log(planetsInLowerCase); // ['земля', 'марс', 'венера', 'юпитер']
+// console.log(planets); // ['Земля', 'Марс', 'Венера', 'Юпитер']
+
+//*----------------------------------------------
+// ! Cтрелочная функция
+// const arrowFnA = () => ({ arrowFnA: 5 });
+// console.log(arrowFnA())
+ 
+// Обычное объявление функции
+// function classicAdd(a, b, c) {
+//   return a + b + c;
+// }
+// Тоже самое как стрелочная функция
+// const arrowAdd = (a, b, c) => {
+//   return a + b + c;
+// };
+
+// если один параметр
+// const add = a => {
+//   return a + 5;
+// };
+// console.log(add())
+
+// если нет параметров
+// const greet = () => {
+//   console.log("Привет!");
+// };
+// greet()
+
+//! Перебирающий forEach
+// const numbers = [5, 10, 15, 20, 25];
+// // Классический for
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(i, numbers[i]);
+// }
+// // Перебирающий forEach
+// numbers.forEach(function (number, index) {
+//   console.log(`Индекс ${index}, значение ${number}`);
+// });
+
+
+//! Инлайн Callback Функции
+// const filter = function (array, test) {
+//   const filteredArrey = [];
+//   for (const el of array) {
+//     console.log(el);
+//     const passed = test(el);
+//     if (passed) {
+//       filteredArrey.push(el);
+//     }
+//   }
+//   return filteredArrey;
+// };
+// const callback1 = function (value) {
+//   return value >= 3;
+// };
+// const r1 = filter([1, 2, 3, 4, 5], callback1);
+// console.log(r1);
+// const callback2 = function (value) {
+//   return value <= 4;
+// };
+// const r2 = filter([1, 2, 3, 4, 5, 6, 7, 8], callback2);
+// console.log(r2);
+// надо передать функцию
+// функция получает элемент массива
+// если элемент массива удовлетворяет условию, то функция вернет true
+// если элемент массива не удовлетворяет условию, то функция вернет false
+
+// const doMath = function (a, b, callback) {
+//   const result = callback(a, b);
+//   console.log(result);
+// };
+// doMath(2, 3, function (x, y) {
+//   return x + y;
+// });
+// doMath(10, 8, function (x, y) {
+//   return x - y;
+// });
+// // const add = function (x, y) { // - эти функции мы закинули в паралемтры doMath
+// //   return x + y;
+// // }
+// // const sub = function (x, y) {
+// //   return x - y;
+// // }
+
+//! Callback Функции
+// const fnA = function (massage, callback) { // fnA - это функция высшего порядка
+//   console.log(massage);
+//   console.log(callback);
+//   callback(100);
+// };
+// const fnB = function (number) { // fnB - Функция Колбэк
+//   console.log('Это лог при вызове fnB', number);
+// };
+// fnA('qwe', fnB);
+
+// function printMyName() {
+// console.log('Ajax')
+// }
+// console.log('start')
+// setTimeout(printMyName, 1000)
+
+// function greet(name) {
+//   console.log(`Добро пожаловать ${name}.`);
+// }
+// function registerGuest(name, callback) {
+//   console.log(`Регистрируем гостя ${name}.`);
+//   callback(name);
+// }
+// registerGuest("Манго", greet);
+
+// ! Функция Фильтр
+
+// ! Паттерн объект параметров (настроек) нужен для чистоты кода и простоты чтения
+// function doStuffWithBook(book) {
+//   const {
+//     title, numberOfPages, downloads, rating, isPublic, stats: { followers, likes },
+//   } = book;
+//   console.log(title, numberOfPages, downloads, rating, isPublic, followers, likes);
+// }
+// const book = {
+//   title: "The Last Kingdom",
+//   numberOfPages: 736,
+//   downloads: 10283,
+//   rating: 8.38,
+//   isPublic: true,
+//   stats: {
+//     followers: 1234,
+//     likes: 4321,
+//   },
+// };
+// doStuffWithBook(book)
+
+// ! Деструктуризация в объекте с оптимизацией for ...of
+// const authors = {
+//   stats: 5603,
+//   views: 4827,
+//   likes: 1308,
+// };
+// const entries = Object.entries(authors);
+// for (const [name, rating] of entries) {
+//   console.log(name, rating)
+// }
+
+// const rgb = [1, 3, 14];
+// const [a, b, c] = rgb;
+// console.log(a, b, c)
+
+// ! Глубокая деструктуризация
+// const user = {
+//   tag: "jgluke",
+//   stats: {
+//     followers: 5603,
+//     views: 4827,
+//     likes: 1308,
+//   },
+// };
+// const {tag, stats: { followers, views: userViews, likes: userLikes = 0 }, } = user;
+// console.log(tag); // jgluke
+// console.log(followers); // 5603
+// console.log(userViews); // 4827
+// console.log(userLikes); // 1308
+
+// !  деструктуризация объекта изменение имени переменной и значение по умолчанию
+// const firstBook = {
+//   title: "The Last Kingdom",
+//   coverImage:
+//     "https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg",
+// };
+// const {
+//   title: firstTitle,
+//   coverImage: firstCoverImage = "https://via.placeholder.com/640/480",
+// } = firstBook;
+// console.log(firstTitle); // The Last Kingdom
+// console.log(firstCoverImage); // https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg
+
+// const secondBook = {
+//   title: "Сон смешного человека",
+// };
+// const {
+//   title: secondTitle,
+//   coverImage: secondCoverImage = "https://via.placeholder.com/640/480",
+// } = secondBook;
+// console.log(secondTitle); // Сон смешного человека
+// console.log(secondCoverImage); // https://via.placeholder.com/640/480
+
+//! деструктуризация объекта - значение по умолчанию (на случай если не будет в объекте)
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+// };
+// const { title, author, genres, isPublic = 555} = book;
+// console.log(title)
+
+//! деструктуризация объекта - цель удобство к доступу к объекту
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   isPublic: true,
+//   rating: 8.38,
+// };
+// const { title, author, genres, isPublic, rating} = book;
+// console.log(book.title) // эта запись не нужна
+// console.log(title)
+
+// ! ...rest 2параметра получат из аргументов свои значения, а все остальные станут в массив
+// function multiply(firstNumber, secondNumber, ...otherArgs) {
+//   console.log(firstNumber); // Значение первого аргумента
+//   console.log(secondNumber); // Значение второго аргумента
+//   console.log(otherArgs); // Массив остальных аргументов
+// }
+// // multiply(1, 2);
+// // multiply(1, 2, 3);
+// multiply(1, 2, 3, 4);
+
+// ! ...args
+// function multiply(...args) {
+//   console.log(args); // массив всех аргументов
+// }
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4);
+
+//! объединение двух объектовов ...spread и перезаписывание
+// const first = { propA: 5, propB: 10, propC: 50 };
+// const second = { propC: 15, propD: 20 };
+// // console.log(first)
+// // console.log(second)
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15, propD: 20 }
+
+// const fourth = { ...second, ...first };
+// console.log(fourth); // { propA: 5, propB: 10, propC: 50, propD: 20 }
+
+//! объединение двух объектовов ...spread
+// const first = { propA: 5, propB: 10 };
+// const second = { propC: 15 };
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15 }
+
+// ! объединение двух массивов ...spread
+// const lastWeekTemps = [14, 25, 11];
+// const currentWeekTemps = [23, 17, 18];
+// const allTemps = [...lastWeekTemps, ...currentWeekTemps];
+// console.log(allTemps); // [14, 25, 11, 23, 17, 18]
+
+// ! распыление в массив через ...spread
+// const arr = [1, 5, 7]
+// const numbers = [14, 25, 11, ...arr, 6, 8];
+// console.log(numbers)
+
+// ! распыление в массив через ...spread и поиск масого большого числа
+// const firstGroupScores = [64, 42, 93];
+// const secondGroupScores = [89, 14, 51, 26];
+// const thirdGroupScores = [29, 47, 18, 97, 81];
+// const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+// const bestScore = Math.max(...allScores);
+// console.log(bestScore)
+
+// ! распыление элементов в массиве ...spread
+// const temps = [14, -4, 25, 8, 11];
+// // ✅ Распылим коллекцию элементов как отдельные аргументы
+// console.log(Math.max(...temps)); // 25
+
+//! создание точной копии ...spread
+// const temps = [14, -4, 25, 8, 11];
+// // Это точная, но независимая копия массива temps
+// const copyOfTemps = [...temps];
+// console.log(copyOfTemps); // [14, -4, 25, 8, 11]
+
+// const a = [{ a: 1 }, { b: 2 }, { c: 3 }];
+// const b = [...a]
+// console.log(a[0] === b[0])
+
+// ! распыляются строки, массивы и объекты; числа не распыляются
+
 // * Объекты------------------------------
 
 // равенство ссылочных типов
@@ -94,24 +657,7 @@
 // const b = a;
 // console.log(b === a);
 
-
-const products = [
-  { name: "Radar", price: 1300, quantity: 4 },
-  { name: "Scanner", price: 2700, quantity: 3 },
-  { name: "Droid", price: 400, quantity: 7 },
-  { name: "Grip", price: 1200, quantity: 9 },
-];
-function getProductPrice(productName) {
-for (const product of products) {
-  if (product.name === productName) {
-  return product.price;
-  }
-}
-  return null;
-}
-console.log(getProductPrice("Grip"))
-
-// ! ищем по одному значению, и возвращаем другое значение 
+// ! ищем по одному значению, и возвращаем другое значение
 // const products = [
 //   { name: "Radar", price: 1300, quantity: 4 },
 //   { name: "Scanner", price: 2700, quantity: 3 },
@@ -172,6 +718,31 @@ console.log(getProductPrice("Grip"))
 //     keys.push(key);
 //   if (apartment.hasOwnProperty(key))
 //   values.push(apartment[key]);
+// }
+
+//! поиск существования свойства через for...in
+// let userInfo = {
+//   name: 'Вася',
+//   address: {
+//     city: 'Черкассы',
+//     street: 'Шевченко'
+//   },
+// };
+// if ('name' in userInfo) {
+//   console.log(userInfo.name)
+// }
+
+//! достаем ключи и значения из вложенного объекта через for...in
+// let userInfo = {
+//   name: 'Вася',
+//   address: {
+//     city: 'Черкассы',
+//     street: 'Шевченко'
+//   },
+// };
+// for (let key in userInfo.address) {
+//   console.log(key)
+//   console.log(userInfo.address[key])
 // }
 
 //! достаем ключи и значения из объекта в массив через for...in
@@ -609,7 +1180,7 @@ console.log(getProductPrice("Grip"))
 // numbers.unshift(4, 7);
 // console.log(numbers);
 
-// ! reverse 
+// ! reverse
 // const numbers = [1, 2, 3, 4, 5];
 // const reverseNumber = numbers.reverse()
 // console.log(numbers)
@@ -647,7 +1218,7 @@ console.log(getProductPrice("Grip"))
 // const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
 // console.log(clients.slice(-2));
 
-// ! splice 
+// ! splice
 // const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
 // const deleteFriends = friends.splice(9, 0, '6')
 // console.log(friends);
