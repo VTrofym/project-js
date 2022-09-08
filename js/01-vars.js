@@ -1,71 +1,3 @@
-// ! узнаем количество свойст через количество собственных ключей
-// ? почему в условии let propCount = 0
-// function countProps(object) {
-//   let propCount = 0;
-//   for (const key in object) {
-//     if (object.hasOwnProperty(key)) {
-//       propCount += 1;
-//     }
-//   }
-//   return propCount;
-// }
-// console.log(countProps({ name: "Mango", age: 2 }))
-
-// ?----------------------
-// const products = [
-//   { name: "Radar", price: 1300, quantity: 4 },
-//   { name: "Scanner", price: 2700, quantity: 3 },
-//   { name: "Droid", price: 400, quantity: 7 },
-//   { name: "Grip", price: 1200, quantity: 9 },
-// ];
-// function getAllPropValues(propName) {
-//   const arrAllValues = [];
-//   for (const product of products) {
-//     if (product.hasOwnProperty(propName)) {
-//       arrAllValues.push(product[propName]);
-//     }
-//   }
-//   return arrAllValues;
-// }
-
-
-
-
-
-
-
-
-// const sum = (a, b) => a + b;
-// const dif = (a, b) => a - b;
-// const multiply = (a, b) => a * b;
-// const cube = a => a ** 3;
-// function calculate(operand, callback) {
-//   return callback(...operand)
-// }
-// console.log(calculate([4,4], multiply))
-
-// const queue = [
-//  {type: 'robot'},
-//  {type: 'robot'},
-//  {type: 'robot'},
-//  {type: 'dog'},
-//  {type: 'robot'},
-// ]
-// const isRobot = (robot) => {
-//   if (robot.type === 'robot') {
-//     return true
-//   }
-//   return false
-// }
-// function processArr(arr, callback) {
-//   const newArr = [];
-//   for (const el of arr) {
-//   newArr.push(callback(el))
-// }
-//   // arr.forEach(element => newArr.push(callback(el))); // или 
-//   return newArr
-// }
-// console.log(processArr(queue, isRobot))
 
 
 
@@ -82,136 +14,263 @@
 
 
 
-// function processCall(recipient, onAvailable, onNotAvailable) {
-//   // Имитируем доступеность абонента случайным числом
-//   const isRecipientAvailable = Math.random() > 0.5;
 
-//   if (!isRecipientAvailable) {
-//     onNotAvailable(recipient);
-//     return;
-//   }
 
-//   onAvailable(recipient);
-// }
 
-// function takeCall(name) {
-//   console.log(`Соединяем с ${name}, ожидайте...`);
-//   // Логика принятия звонка
-// }
 
-// function activateAnsweringMachine(name) {
-//   console.log(`Абонент ${name} недоступен, оставьте сообщение.`);
-//   // Логика активации автоответчика
-// }
 
-// function leaveHoloMessage(name) {
-//   console.log(`Абонент ${name} недоступен, записываем голограмму.`);
-//   // Логика записи голограммы
-// }
 
-// processCall("Mango", takeCall, activateAnsweringMachine);
-// processCall("Poly", takeCall, leaveHoloMessage);
 
-// ?????? Доступ к свойствам в методах
-// const bookShelf = {
-//   books: ["The Last Kingdom"],
-//   getBooks() {
-//     console.log(this);
+
+
+
+
+// ! formData достаем ключи и значения
+const formElemRef = document.querySelector('#formElem');
+const formData = new FormData(formElemRef);
+console.log('formData :>> ', formData);
+const obj = {};
+formData.append('age', 25);
+console.log('formData.has(age); :>> ', formData.has('user'));
+formData.forEach((value, key) => {
+  obj[key] = value;
+});
+console.log('obj :>> ', obj);
+console.log(formData);
+
+// ! Доступ к document и объединение в одну ветвь
+// const articlJs = document.createElement('article');
+// articlJs.classList.add('product');
+// const tilleJs = document.createElement('h2');
+// tilleJs.classList.add('product__name');
+// const textProduct = document.createElement('p');
+// textProduct.classList.add('product__descr');
+// const priceProduct = document.createElement('p');
+// priceProduct.classList.add('product__price');
+// articlJs.append(tilleJs, textProduct, priceProduct);
+// console.log(articlJs);
+
+
+// !Задача про передвижение ведьмочки
+{/* <div class="wall">
+        <img src="https://svgsilh.com/svg/159936.svg" class="whitch" alt="whitch">
+      </div>
+
+const wall = document.querySelector('.wall');
+const whitch = document.querySelector('.whitch')
+wall.addEventListener('click', (event) => {
+  const { clientHeight: wallHeight, clientWidth: wallWidth } = wall
+  const { clientHeight: whitchHeight, clientWidth: whitchWidth } = whitch
+  let coordsX = `${event.offsetX - whitchWidth / 2 }px`
+  let coordsY = `${event.offsetY - whitchHeight / 2 }px`
+  if (event.offsetX < whitchWidth / 2) {
+    coordsX = 0
+  }
+  if (event.offsetX > (wallWidth - whitchWidth / 2)) {
+    coordsX = `${wallWidth - whitchWidth / 2}px`
+  }
+  whitch.style.left = coordsX;
+  whitch.style.top = coordsY;
+}) */}
+
+
+
+
+// !Задача с двумя вариантами решений
+{/* <section id="tree"></section> */} // Это в HTML 
+
+// const food = {
+//   'Meat': {
+//     'Pork': {},
+//     'Beef': {},
+//   },
+//   'Fruit': {
+//     'Red': {
+//       'Cherry': { 'ding': {}},
+//       'Strawberry': {},
+//     },
+//     'Yellow': {
+//       'Banana': {},
+//       'Pineapple': {},
+//     },
 //   },
 // };
-// // Перед точкой стоит объект bookShelf,
-// // поэтому при вызове метода, this будет хранить ссылку на него.
-// bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
 
-// const bookShelf = {
-//   books: ["The Last Kingdom"],
-//   getBooks() {
-//     return this.books;
-//   },
-//   addBook(bookName) {
-//     this.books.push(bookName);
-//   },
-//   removeBook(bookName) {
-//     const bookIndex = this.books.indexOf(bookName);
-//     this.books.splice(bookIndex, 1);
-//   },
-// };
-// console.log(bookShelf.getBooks()); // ["The Last Kingdom"]
-// bookShelf.addBook("The Mist");
-// bookShelf.addBook("Dream Guardian");
-// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'The Mist', 'Dream Guardian']
-// bookShelf.removeBook("The Mist");
-// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
 
-// Как объявить параметры функции так,
-// чтобы можно было передать любое кол-во аргументов?
+// // const tree = document.querySelector('#tree')
+// // console.log(tree) 
 
-// ?задача корзина товаров по объектам
-// const cart = {
-//   items: [],
-//   getItems() {
-//     return this.items;
-//   },
-//   add(product) {
-//     this.items.push(product)
-//   },
-//   remove(productName) {
-//     const {items } = this
-//     for (let i = 0; i < items.length; i += 1) {
-//       const {name} = items[i]
-//       if (productName === name){
-//         console.log('нашли такой продукт ', productName);
-//         console.log('индекс: ', i);
-//         items.splice(i, 1);
-//     }
-//     }
-//   },
-//   clear() {
-//     this.items = []
-//   },
-//   countTotalPrice() {
-//     const { items } = this;
-//     let total = 0;
-//     for (const {price} of items) {
-//       total += price;
-//     }
-//     return total;
-//   },
-//   increaseQuantity(productName) { },
-//   descreaseQuantity(productName) { },
-// };
-// console.log(cart.getItems());
-// cart.add({ name: 'apple', price: 50 });
-// cart.add({ name: 'limon', price: 60 });
-// cart.add({ name: 'limon', price: 60 });
-// cart.add({ name: 'strewberry', price: 110 });
-// console.table(cart.getItems());
-// console.log('Tottal: ', cart.countTotalPrice())
-// cart.remove('limon');
-// console.table(cart.getItems())
-// cart.clear();
-// console.log(cart.getItems());
+// // function createTree(element, Obj) {
+// //   const list = document.createElement('ul');
+// //   const ObjKeys = Object.keys(Obj);
+// //   ObjKeys.forEach((key) => {
+// //     const liKey = document.createElement('li');
+// //     liKey.textContent = key;
+// //     list.append(liKey);
+// //     createTree(liKey ,Obj[key])
+// //   });
+// // element.append(list)
+// // }
+
+// // createTree(tree, food)
+
+// const tree = document.querySelector('#tree');
+
+// function createTree (element, obj) {
+//   const list = document.createElement('ul');
+//   const objKeys = Object.keys(obj); 
+  
+//   objKeys.forEach((key) => {
+//     const newLi = liFabrica(key, list)  
+//     createTree(newLi, obj[key])
+//   })
+//   element.append(list)
+// }
+
+// createTree(tree, food)
+
+// function liFabrica (string, list) {
+//     const liKey = document.createElement('li');
+//     liKey.textContent = string;
+//     list.append(liKey)
+//   return liKey
+// }
+
+
+
+
+
+
+
+
+
+
+//* --------------Класссы-----------
+
+
+
+
+
+// ! Геттеры и Сеттеры
+// class User {
+//   #email;
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.#email = email;
+//   }
+//   // Геттер email
+//   get email() {
+//     return this.#email;
+//   }
+//   // Сеттер email
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
+// ! приватные свойства
+// class User {
+//   // Необязательное объявление публичных свойств
+//   name;
+//   // Обязательное объявление приватных свойств
+//   #email;
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.#email = email;
+//   }
+//   getEmail() {
+//     return this.#email;
+//   }
+//   changeEmail(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+// const mango = new User({
+//   name: "Манго",
+//   email: "mango@mail.com",
+// });
+// mango.changeEmail("mango@supermail.com");
+// console.log(mango.getEmail()); // mango@supermail.com
+// console.log(mango.#email); // Будет ошибка, это приватное свойство
+
+//! методы класса
+// class User {
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.email = email;
+//   }
+//   // Метод getEmail
+//   getEmail() {
+//     return this.email;
+//   }
+//   // Метод changeEmail
+//   changeEmail(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// ! Объект параметров
+// class User {
+//   // Деструктуризируем объект
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+// const mango = new User({
+//   name: "Манго",
+//   email: "mango@mail.com",
+// });
+// console.log(mango); // { name: "Манго", email: "mango@mail.com" }
+// const poly = new User({
+//   name: "Поли",
+//   email: "poly@mail.com",
+// });
+// console.log(poly); // { name: "Поли", email: "poly@mail.com" }
+
+// ! Конструктор класса
+// class User {
+//   constructor(name, email) {
+//     // Инициализация свойств экземпляра
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+// const mango = new User("Манго", "mango@mail.com");
+// console.log(mango); // { name: 'Манго', email: 'mango@mail.com' }
+// const poly = new User("Поли", "poly@mail.com");
+// console.log(poly); // { name: 'Поли', email: 'poly@mail.com' }
+
+// ! Объявление класса
+// class User {
+// }
+// const mango = new User();
+// console.log(mango); // {}
+// const poly = new User();
+// console.log(poly); // {}
+
+// ! Цепочка прототипов, hasOwnProperty
+// const objC = {
+//   z: 5
+// }
+// console.log(objC)
+// const objB = Object.create(objC)
+// objB.y = 2
+// console.log(objB)
+// const objA = Object.create(objB)
+// objA.x = 1
+// console.log(objA)
+// console.log(objA.hasOwnProperty('x'))
+
 //*----------Перебирающие методы массива
 
+// ! Метод reduce() среднее арифметическое в массиве
+// const ages = [18, 14, 22, 34, 43, 18, 20, 34, 24];
+// function getAverageAge(ages) {
+//     return Math.round((ages.reduce((acc, age) => acc + age)) / ages.length)
+// }
+// console.log(getAverageAge(ages))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//! Продвинутый reduce
-
-// ! Метод reduce() сумма числе в массиве
 // const students = [
 //   { name: "Манго", score: 83 },
 //   { name: "Поли", score: 59 },
@@ -224,6 +283,7 @@
 //   return total + student.score;
 // }, 0);
 // const averageScore = totalScore / students.length;
+// console.log(averageScore)
 
 // const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
 //   return previousValue + number;
@@ -282,21 +342,21 @@
 // colorPickerOptions.find(option => option.label === "white"); // undefined
 // console.log(colorPickerOptions)
 
-//! Метод filter() прописанный в декларативе
-const numbers = [1, 2, 3, 4, 5];
-const func = (el) => el > 3
-numbers.filter = function (callback) {
-    const newArr = []
-    for (let i = 0; i < this.length; i += 1) {
-        const shouldBeAdded = callback(this[i], i, this)
-        if (shouldBeAdded) {
-            newArr[newArr.length] = this[i]
-        }   
-    }
-    return newArr
-}
-console.log(numbers.filter(func))
-console.log(numbers)
+//! Метод filter() прописанный в императиве 
+// const numbers = [1, 2, 3, 4, 5];
+// const func = (el) => el > 3
+// numbers.filter = function (callback) {
+//     const newArr = []
+//     for (let i = 0; i < this.length; i += 1) {
+//         const shouldBeAdded = callback(this[i], i, this)
+//         if (shouldBeAdded) {
+//             newArr[newArr.length] = this[i]
+//         }   
+//     }
+//     return newArr
+// }
+// console.log(numbers.filter(func))
+// console.log(numbers)
 
 //! Метод filter() массив объектов
 // const LOW_SCORE = 50;
@@ -356,6 +416,19 @@ console.log(numbers)
 // // [['математика', 'физика'], ['информатика', 'математика'], ['физика', 'биология']]
 // students.flatMap(student => student.courses);
 // // ['математика', 'физика', 'информатика', 'математика', 'физика', 'биология'];
+
+//! Метод map() прописанный в императиве 
+// const numbers = [1, 2, 3, 4, 5];
+// const increase = (el) => el * el
+// numbers.map = function (callback) {
+//     const newArr = []
+//     for (let i = 0; i < this.length; i += 1) {
+//         const callbackResult = callback(this[i], i, this) 
+//         newArr[newArr.length] = callbackResult
+//     }
+//     return newArr
+// }
+// console.log(numbers.map(increase))
 
 //! Метод map()
 // const students = [
@@ -903,7 +976,7 @@ console.log(numbers)
 // }
 // console.log(colorPickerData);
 
-// ! обращение через . и через []
+// ! Объекты обращение через . и через []
 // const playlist = {
 //     name: 'Мой супер плейлист',
 //     rating: 5,
@@ -1220,8 +1293,9 @@ console.log(numbers)
 
 // ! splice
 // const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
-// const deleteFriends = friends.splice(9, 0, '6')
+// const deleteFriends = friends.splice(0, 2, '6')
 // console.log(friends);
+// console.log(deleteFriends)
 
 // ! slice объединение элементов в 1 строку string с отрезанием конца
 // const friends = ['Mango', 'Kivi', 'Poly', 'Ajax'];
