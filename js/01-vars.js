@@ -25,116 +25,8 @@
 
 
 
-// ! formData достаем ключи и значения
-const formElemRef = document.querySelector('#formElem');
-const formData = new FormData(formElemRef);
-console.log('formData :>> ', formData);
-const obj = {};
-formData.append('age', 25);
-console.log('formData.has(age); :>> ', formData.has('user'));
-formData.forEach((value, key) => {
-  obj[key] = value;
-});
-console.log('obj :>> ', obj);
-console.log(formData);
-
-// ! Доступ к document и объединение в одну ветвь
-// const articlJs = document.createElement('article');
-// articlJs.classList.add('product');
-// const tilleJs = document.createElement('h2');
-// tilleJs.classList.add('product__name');
-// const textProduct = document.createElement('p');
-// textProduct.classList.add('product__descr');
-// const priceProduct = document.createElement('p');
-// priceProduct.classList.add('product__price');
-// articlJs.append(tilleJs, textProduct, priceProduct);
-// console.log(articlJs);
 
 
-// !Задача про передвижение ведьмочки
-{/* <div class="wall">
-        <img src="https://svgsilh.com/svg/159936.svg" class="whitch" alt="whitch">
-      </div>
-
-const wall = document.querySelector('.wall');
-const whitch = document.querySelector('.whitch')
-wall.addEventListener('click', (event) => {
-  const { clientHeight: wallHeight, clientWidth: wallWidth } = wall
-  const { clientHeight: whitchHeight, clientWidth: whitchWidth } = whitch
-  let coordsX = `${event.offsetX - whitchWidth / 2 }px`
-  let coordsY = `${event.offsetY - whitchHeight / 2 }px`
-  if (event.offsetX < whitchWidth / 2) {
-    coordsX = 0
-  }
-  if (event.offsetX > (wallWidth - whitchWidth / 2)) {
-    coordsX = `${wallWidth - whitchWidth / 2}px`
-  }
-  whitch.style.left = coordsX;
-  whitch.style.top = coordsY;
-}) */}
-
-
-
-
-// !Задача с двумя вариантами решений
-{/* <section id="tree"></section> */} // Это в HTML 
-
-// const food = {
-//   'Meat': {
-//     'Pork': {},
-//     'Beef': {},
-//   },
-//   'Fruit': {
-//     'Red': {
-//       'Cherry': { 'ding': {}},
-//       'Strawberry': {},
-//     },
-//     'Yellow': {
-//       'Banana': {},
-//       'Pineapple': {},
-//     },
-//   },
-// };
-
-
-// // const tree = document.querySelector('#tree')
-// // console.log(tree) 
-
-// // function createTree(element, Obj) {
-// //   const list = document.createElement('ul');
-// //   const ObjKeys = Object.keys(Obj);
-// //   ObjKeys.forEach((key) => {
-// //     const liKey = document.createElement('li');
-// //     liKey.textContent = key;
-// //     list.append(liKey);
-// //     createTree(liKey ,Obj[key])
-// //   });
-// // element.append(list)
-// // }
-
-// // createTree(tree, food)
-
-// const tree = document.querySelector('#tree');
-
-// function createTree (element, obj) {
-//   const list = document.createElement('ul');
-//   const objKeys = Object.keys(obj); 
-  
-//   objKeys.forEach((key) => {
-//     const newLi = liFabrica(key, list)  
-//     createTree(newLi, obj[key])
-//   })
-//   element.append(list)
-// }
-
-// createTree(tree, food)
-
-// function liFabrica (string, list) {
-//     const liKey = document.createElement('li');
-//     liKey.textContent = string;
-//     list.append(liKey)
-//   return liKey
-// }
 
 
 
@@ -1746,4 +1638,152 @@ wall.addEventListener('click', (event) => {
 //   "endOfLine": "lf",
 //   "parser": "babel-ts",
 //   "quoteProps": "consistent"
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ! Логика сортировки таблицы - работает со своим HTML и CSS 
+// const thead = document.querySelector('thead');
+// const tbody = document.querySelector('tbody');
+// const trows = tbody.querySelectorAll('tr');
+// thead.addEventListener('click', onClickSort)
+// function onClickSort (event) {
+// const target = event.target;
+//   const cellIndex = event.target.cellIndex;
+//   const sorted = [...trows].sort((first, next) => {
+//     const cellText = first.cells[cellIndex].textContent.replace(/[,$]/g, '');
+//     const cellNext = next.cells[cellIndex].textContent.replace(/[,$]/g, '');
+//     if (!isNaN(+cellText)){
+//       return cellText - cellNext;      
+//     };
+//     return cellText.localeCompare(cellNext)
+//   });
+//   tbody.append(...sorted);
+// }
+
+
+// ! formData достаем ключи и значения
+// const formElemRef = document.querySelector('#formElem');
+// const formData = new FormData(formElemRef);
+// console.log('formData :>> ', formData);
+// const obj = {};
+// formData.append('age', 25);
+// console.log('formData.has(age); :>> ', formData.has('user'));
+// formData.forEach((value, key) => {
+//   obj[key] = value;
+// });
+// console.log('obj :>> ', obj);
+// console.log(formData);
+
+// ! Доступ к document и объединение в одну ветвь
+// const articlJs = document.createElement('article');
+// articlJs.classList.add('product');
+// const tilleJs = document.createElement('h2');
+// tilleJs.classList.add('product__name');
+// const textProduct = document.createElement('p');
+// textProduct.classList.add('product__descr');
+// const priceProduct = document.createElement('p');
+// priceProduct.classList.add('product__price');
+// articlJs.append(tilleJs, textProduct, priceProduct);
+// console.log(articlJs);
+
+
+// !Задача про передвижение ведьмочки
+{/* <div class="wall">
+        <img src="https://svgsilh.com/svg/159936.svg" class="whitch" alt="whitch">
+      </div>
+
+const wall = document.querySelector('.wall');
+const whitch = document.querySelector('.whitch')
+wall.addEventListener('click', (event) => {
+  const { clientHeight: wallHeight, clientWidth: wallWidth } = wall
+  const { clientHeight: whitchHeight, clientWidth: whitchWidth } = whitch
+  let coordsX = `${event.offsetX - whitchWidth / 2 }px`
+  let coordsY = `${event.offsetY - whitchHeight / 2 }px`
+  if (event.offsetX < whitchWidth / 2) {
+    coordsX = 0
+  }
+  if (event.offsetX > (wallWidth - whitchWidth / 2)) {
+    coordsX = `${wallWidth - whitchWidth / 2}px`
+  }
+  whitch.style.left = coordsX;
+  whitch.style.top = coordsY;
+}) */}
+
+
+// !Задача с двумя вариантами решений
+{/* <section id="tree"></section> */} // Это в HTML 
+
+// const food = {
+//   'Meat': {
+//     'Pork': {},
+//     'Beef': {},
+//   },
+//   'Fruit': {
+//     'Red': {
+//       'Cherry': { 'ding': {}},
+//       'Strawberry': {},
+//     },
+//     'Yellow': {
+//       'Banana': {},
+//       'Pineapple': {},
+//     },
+//   },
+// };
+
+
+// // const tree = document.querySelector('#tree')
+// // console.log(tree) 
+
+// // function createTree(element, Obj) {
+// //   const list = document.createElement('ul');
+// //   const ObjKeys = Object.keys(Obj);
+// //   ObjKeys.forEach((key) => {
+// //     const liKey = document.createElement('li');
+// //     liKey.textContent = key;
+// //     list.append(liKey);
+// //     createTree(liKey ,Obj[key])
+// //   });
+// // element.append(list)
+// // }
+
+// // createTree(tree, food)
+
+// const tree = document.querySelector('#tree');
+
+// function createTree (element, obj) {
+//   const list = document.createElement('ul');
+//   const objKeys = Object.keys(obj); 
+  
+//   objKeys.forEach((key) => {
+//     const newLi = liFabrica(key, list)  
+//     createTree(newLi, obj[key])
+//   })
+//   element.append(list)
+// }
+
+// createTree(tree, food)
+
+// function liFabrica (string, list) {
+//     const liKey = document.createElement('li');
+//     liKey.textContent = string;
+//     list.append(liKey)
+//   return liKey
 // }
