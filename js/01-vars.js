@@ -32,15 +32,635 @@
 
 
 
+// * промисы --------------------------
 
 
 
+//! Задача от Жени
+
+{/* <body>
+  <form>
+    <label for="login">
+      Login
+      <input name="login" type="text" placeholder="Login" id="login">
+    </label>
+    <label for="password">
+      Password
+      <input name="password" type="password" placeholder="Password" id="password">
+    </label>
+
+    <button type="button" id="submit">Login</button>
+  </form>
+
+  <script src="./js/01-vars.js" type="module"></script>
+</body> */}
+
+// const loginEl = document.querySelector('#login')
+// const passwordEl = document.querySelector('#password')
+// const submitBtn = document.querySelector('#submit')
+// function waitFor(element, eventName) {
+//   return new Promise((resolve) => {
+//     element.addEventListener(eventName, () => {
+//       resolve(`It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}`)
+//     })
+//   })
+// }
+// function printMessage(message) {
+//   document.body.insertAdjacentHTML('beforeend',
+//     `<div class="message"><p> ${message}</p></div>`)
+// }
+// waitFor(loginEl, 'click').then(printMessage)
+// waitFor(passwordEl, 'click').then(printMessage)
+// waitFor(submitBtn, 'click').then(printMessage)
+
+
+
+
+// let globalVariable;
+// fetch("https://jsonplaceholder.typicode.com/users")
+//   .then(response => response.json())
+//   .then(users => {
+//     console.log("users inside then callback: ", users);
+//     globalVariable = users;
+//     console.log("globalVariable inside fetch callback: ", globalVariable);
+//   });
+// console.log("globalVariable outside fetch: ", globalVariable);
+
+// ! пример с лошадьми
+// const horses = [
+//   'secretariat',
+//   'Eclipse',
+//   'West Australian'
+// ];
+// console.log('Заезд начался')
+// const promises = horses.map(run)
+// console.log(promises)
+// Promise.race(promises).then(({ horse, time }) => {
+//   console.log(`Победил ${horse}, финишировал за ${time} времени`)
+// })
+// Promise.all(promises).then((x) => {
+//   console.log(x)
+//   console.log('Заезд окончен')
+// })
+// function run(horse) {
+//   return new Promise(resolve => {
+//     const time = getRandomTime(2000, 3500)
+//     setTimeout(() => {
+//       resolve({horse, time})
+//     }, time)
+//   })
+// }
+// function getRandomTime(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1) + min)
+// }
+
+// const makePromise = () => {
+//   return new Promise((resolve, reject) => {
+//     resolve('Куку это resolve')
+//   })
+// }
+// makePromise().then(result => console.log(result))
+
+// const makePromise = () => {
+//   return new Promise((resolve, reject) => {
+//     const passed = Math.random() > 0.5;
+//     setTimeout(() => {
+// if (passed) {
+//       resolve('Куку это resolve')
+//     }
+//     reject('все пропало')
+//     }, 2000)
+//   })
+// }
+// makePromise()
+//   .then(result => console.log(result))
+//   .catch(error => console.log(error))
+
+//! пример с покемонами
+// const fetchPokemonById = id => {
+//   return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json());
+// };
+// fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError);
+// fetchPokemonById(2).then(onFetchSuccess).catch(onFetchError);
+// fetchPokemonById(3).then(onFetchSuccess).catch(onFetchError);
+// function onFetchSuccess (pokemon) {
+//   console.log('onFetchSuccess -> onFetchSuccess');
+//   console.log(pokemon)
+// }
+// function onFetchError (error) {
+//   console.log('onFetchError -> onFetchError');
+//   console.log('Это в блоке catch');
+//   console.log(error)
+// }
+
+// ! Метод Promise.resolve()
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(5);
+//   }, 2000);
+// });
+// promise
+//   .then(value => {
+//     console.log(value);
+//     return value * 2;
+//   })
+//   .then(value => {
+//     console.log(value);
+//     return value * 3;
+//   })
+//   .then(value => {
+//     console.log(value);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   })
+//   .finally(() => {
+//     console.log("Final task");
+//   });
+
+
+// const isSuccess = true;
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     if (isSuccess) {
+//       resolve("Success! Value passed to resolve function");
+//     } else {
+//       reject("Error! Error passed to reject function");
+//     }
+//   }, 2000);
+// });
+// promise
+//   .then(value => console.log(value))
+//   .catch(error => console.log(error))
+//   .finally(() => console.log("Promise settled"));
+
+
+
+// const isSuccess = true;
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     if (isSuccess) {
+//       resolve("Success! Value passed to resolve function");
+//     } else {
+//       reject("Error! Error passed to reject function");
+//     }
+//   }, 2000);
+// });
+// promise
+//   .then(value => {
+//     console.log(value);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+
+
+// const isSuccess = false;
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     if (isSuccess) {
+//       resolve("Success! Value passed to resolve function");
+//     } else {
+//       reject("Error! Error passed to reject function");
+//     }
+//   }, 2000);
+// });
+// console.log("Before promise.then()");
+// promise.then(
+//   value => {
+//     console.log("onResolve call inside promise.then()");
+//     console.log(value);
+//   },
+//   error => {
+//     console.log("onReject call inside promise.then()");
+//     console.log(error);
+//   }
+// );
+// console.log("After promise.then()");
+
+// const isSuccess = true;
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     if (isSuccess) {
+//       resolve("Success! Value passed to resolve function");
+//     } else {
+//       reject("Error! Error passed to reject function");
+//     }
+//   }, 2000);
+// });
+// console.log(promise)
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve(5)
+//   reject('10')
+// })
+// console.log(promise)
+
+// * setTimeout()---new Date()--------------------------
+
+// ! Функция   new Date()
+
+// let counter = 0;
+// function showTime() {
+//   const timerId = setTimeout(() => {
+//     counter += 1;
+//     const date = new Date();
+//     showTime();
+//     console.log(date);
+    
+//   }, 1000);
+//   if (counter >= 5) {
+//     clearTimeout(timerId);
+//   }
+// }
+// showTime();
+
+// function showTime() {
+//   setTimeout(() => {
+//     const date = new Date()
+//     showTime()
+//     console.log(date.toLocaleString())
+//     console.log(date.toLocaleTimeString())
+//     console.log(date)
+//   }, 1000)
+// }
+// showTime()
+
+// const date = new Date("March 16, 2030 14:25:00");
+
+// date.toString();
+// console.log(date)
+// console.dir(date)
+
+// date.toTimeString();
+
+// // "14:25:00 GMT+0200 (Eastern European Standard Time)"
+
+// date.toLocaleTimeString();
+// // "2:25:00 PM"
+
+// date.toUTCString();
+// // "Sat, 16 Mar 2030 12:25:00 GMT"
+
+// date.toDateString();
+// // "Sat Mar 16 2030"
+
+// date.toISOString();
+// // "2030-03-16T12:25:00.000Z"
+
+// date.toLocaleString();
+// "3/16/2030, 2:25:00 PM"
+
+// date.getTime();
+// 1899894300000
+
+// const date = new Date("March 16, 2030 14:25:00");
+// date.setMinutes(50);
+// date.setFullYear(2040, 4, 8);
+
+// const date = new Date();
+// console.log("Date: ", date);
+// console.log("getUTCDate(): ", date.getUTCDate());
+// console.log("getUTCDay(): ", date.getUTCDay());
+// console.log("getUTCMonth(): ", date.getUTCMonth());
+// console.log("getUTCFullYear(): ", date.getUTCFullYear());
+// console.log("getUTCHours(): ", date.getUTCHours());
+// console.log("getUTCMinutes(): ", date.getUTCMinutes());
+// console.log("getUTCSeconds(): ", date.getUTCSeconds());
+// console.log("getUTCMilliseconds(): ", date.getUTCMilliseconds());
+
+// const date = new Date();
+// console.log("Date: ", date);
+// console.log("getDate(): ", date.getDate());
+// console.log("getDay(): ", date.getDay());
+// console.log("getMonth(): ", date.getMonth());
+// console.log("getFullYear(): ", date.getFullYear());
+// console.log("getHours(): ", date.getHours());
+// console.log("getMinutes(): ", date.getMinutes());
+// console.log("getSeconds(): ", date.getSeconds());
+// console.log("getMilliseconds(): ", date.getMilliseconds());
+
+// const date = new Date(2030, 2, 16, 14, 25, 0, 0);
+// console.log(date);
+
+// new Date("2030-03-16");
+// new Date("2030-03");
+// new Date("2030");
+// new Date("03/16/2030");
+// new Date("2030/03/16");
+// new Date("2030/3/16");
+// new Date("March 16, 2030");
+// new Date("March 16, 2030 14:25:00");
+// new Date("2030-03-16 14:25:00");
+// new Date("2030-03-16T14:25:00");
+// new Date("16 March 2030");
+
+// const teamMeetingDate = new Date("March 16, 2030");
+// console.log(teamMeetingDate);
+
+// const preciseTeamMeetingDate = new Date("March 16, 2030 14:25:00");
+// console.log(preciseTeamMeetingDate);
+
+// const date = new Date();
+// console.log(date.getTime()); // 1624021654154
+
+// const date = new Date();
+// console.log(date);
+// console.log(date.toString());
+
+// console.log(new Date(0));
+// console.log(new Date(15000));
+
+// ! Функция  setInterval
+
+// const logger = time => console.log(`лог каждые ${time}ms - ${Date.now()}`)
+// console.log('до вызова сет интервал')
+// setInterval(logger, 2000, 2000)
+// console.log('после вызова сет интервал')
+
+// ! Функция  clearTimeout(id)
+// const greet = () => {
+//   console.log("Hello!");
+// };
+// const timerId = setTimeout(greet, 3000);
+// clearTimeout(timerId);
+
+// ! Функция setTimeout()
+
+// console.log("до вывоза")
+// setTimeout(() => {
+//   console.log('вывов Ф 1 ')
+// }, 10)
+// setTimeout(() => {
+//   console.log('вывов Ф 2 ')
+// }, 2)
+// console.log('после всего ')
+
+// console.log("First log");
+// setTimeout(() => {
+//   console.log("Second log");
+// }, 2000);
+// console.log("Third log");
+
+
+
+//* Локальное хранилище localStorage
+
+
+// localStorage.setItem("ui-theme", "light");
+// localStorage.setItem("sidebar", "expanded");
+// localStorage.setItem("notification-level", "mute");
+// console.log(localStorage)
+// localStorage.removeItem("notification-level")
+// localStorage.clear()
+
+//*------JSON------------------
+
+//! Метод JSON.parse()
+// const json = '{"name":"Mango","age":3,"isHappy":true}';
+// const dog = JSON.parse(json);
+// console.log(dog);
+// console.log(dog.name);
+
+//! Метод JSON.stringify()
+// const dog = {
+//   name: "Mango",
+//   age: 3,
+//   isHappy: true,
+//   bark() {
+//     console.log("Woof!");
+//   },
+// };
+// const dogJSON = JSON.stringify(dog);
+// console.log(dogJSON);
+
+//! Формат JSON
+// {
+//   "name": "Josh",
+//   "weight": 175,
+//   "age": 30,
+//   "eyecolor": "brown",
+//   "isHappy": true,
+//   "cars": ["Chevy", "Honda"],
+//   "favoriteBook": {
+//     "title": "The Last Kingdom",
+//     "author": "Bernard Cornwell",
+//     "rating": 8.38
+//   }
+// }
+
+
+//*------Export Import------------------
+
+//! импорт объекта и модулем 
+// import {
+//     fetchAllUsers,
+//     fetchUsersById,
+//     updateUsersById,
+//     x as value,
+//     y as name,
+// } from './validate.js';
+// console.log(fetchAllUsers)
+// console.log(fetchUsersById)
+// console.log(updateUsersById)
+// console.log(value)
+// console.log(name)
+
+
+//! импорт всех экспортов модуля как объект с указанным именем
+// import * as validate from './validate.js'
+// console.log(validate.fetchAllUsers)
+// console.log(validate.x)
+
+
+// !Default импорт 
+// import myFunc from "./validate.js";
+// myFunc();
+
+
+
+
+// * События -----------------------------
+
+// !Прием throttle debounce (библиотека Lodash) контролирует количество раз которое функция может быть вызвана в течение промежутка времени.
+// document.addEventListener(
+//   "scroll",
+//   _.throttle(() => {
+//     console.log("Scroll handler call every 300ms");
+//   }, 300)
+// );
+
+// document.addEventListener(
+//   "scroll",
+//   _.debounce(() => {
+//     console.log("Scroll handler call after 300ms pause");
+//   }, 300)
+// );
+
+//! Навешивание одного обработчика (родительского)
+// const lesson = document.querySelector('.lesson');
+// lesson.addEventListener('click', function (event) {
+//   if (event.target.closest('.button')) {
+//     showConsole();
+//   }
+// });
+// function showConsole() {
+//   console.log('Ура!');
+// }
+
+// ! Свойста у event в консоли
+// const button = document.querySelector('.button');
+// button.addEventListener('click', showConsole);
+// function showConsole(event) {
+//   console.log(event.type);
+//   console.log(event.target);
+//   console.log(event.currentTarget);
+//   console.log(event.clientX);
+//   console.log(event.clientY);
+//   console.log(event)
+// }
+
+// ! Просто клик на кнопу
+// const button = document.querySelector('.button');
+// button.addEventListener('click', showConsole);
+// function showConsole() {
+//   console.log('Клaк!');
+// }
+
+// ?! задача от Репеты на 3 кнопки
+//html    <ul>
+    //   <li>First item</li>
+    //   <li>Second item</li>
+    //   <li>Third item</li>
+    //   <li>Fourth item</li>
+    //   <li>Fifth item</li>
+    // </ul>
+    //   <button type="button" class="target-btn">Целевая кнопка</button>
+    //   <button type="button" class="add-listener">Добавить Слушателя</button>
+    //   <button type="button" class="remove-listener">Снять Слушателя</button>
+
+// const target = document.querySelector('.target-btn')
+// const addListener = document.querySelector('.add-listener')
+// const removeListener = document.querySelector('.remove-listener')
+// addListener.addEventListener('click', (e) => {
+//   console.log('Вешаю слушателя на целевую');
+//   target.addEventListener('click', onTargetBtnClick);
+// });
+// removeListener.addEventListener('click', (e) => {
+//   console.log('Снимаю');
+//   target.removeEventListener('click', onTargetBtnClick)
+// });
+// function onTargetBtnClick(e) {
+//   console.log('Клик по целевой кнопке')
+// }
+
+// ! События клавиатуры Свойства key и code
+// document.addEventListener("keydown", event => {
+//   console.log("key: ", event.key);
+//   console.log("code: ", event.code);
+// });
+
+// document.addEventListener("keydown", event => {
+//   console.log("Keydown: ", event);
+// });
+
+// ! Объект события  event.currentTarget   event.target
+// const  btn = document.querySelector("button");
+// const handleClick = (event) => {
+  // console.log("event: ", event);
+  // console.log("event type: ", event.type);
+  // console.log("target: ", event.target);
+  // console.log("currentTarget: ", event.currentTarget);
+// };
+// btn.addEventListener("click", handleClick);
+
+// const  btn = document.querySelector("button");
+// const handleClick = event => {
+//   console.dir(event);
+// };
+// btn.addEventListener("click", handleClick);
+
+// ! Метод removeEventListener()
+// element.removeEventListener(event, handler, options);
+
+// ! Метод addEventListener()
+
+// const  btn = document.querySelector("button");
+// btn.addEventListener("click", () => {
+//   console.log("li was clicked");
+// });
+
+// ! Переданная ссылка на callback 
+// const  btn = document.querySelector("button");
+// const handleClick = () => {
+//   console.log("li was clicked");
+// };
+// btn.addEventListener("click", handleClick);
+
+// * ДОМ -----------------------------
+
+//!  Свойство innerHTML
+// const bodyRef = document.querySelector('body')
+// bodyRef.insertAdjacentHTML("afterbegin", 'New and <span class="accent">improved</span> title') ;
+// console.log(bodyRef);
+
+//!  Свойство innerHTML
+// const bodyRef = document.querySelector('body')
+// bodyRef.innerHTML = 'New and <span class="accent">improved</span> title';
+// console.log(bodyRef.innerHTML);
+// console.log(bodyRef);
+
+// ! Создание и удаление элементов
+// const bodyRef = document.querySelector('body')
+// console.log(bodyRef);
+// bodyRef.textContent = "This is a heading";
+// console.log(bodyRef);
+// const image = document.createElement("img");
+// image.src = "https://placeimg.com/640/480/nature";
+// image.alt = "Nature";
+// console.log(image);
+
+//! Атрибуты 
+// const button = document.querySelector('[data-action="close"]')
+// console.log(button)
+
+//! Свойство style
+// const bodyRef = document.querySelector('body')
+// bodyRef.style.backgroundColor = "teal";
+// bodyRef.style.fontSize = "24px";
+// bodyRef.style.textAlign = "center";
+// console.log(bodyRef.style); // inline styles object
+
+// ! Свойство classList
+// const bodyRef = document.querySelector('body');
+// console.log(bodyRef.classList.contains('class-body'))
+
+//! textContent
+// const liRef = document.querySelector('li').textContent;
+// console.log(liRef)
+
+// ! Поиск элементов
+// const bodyRef = document.querySelector('body');
+// console.log(bodyRef)
+
+// const allLiRef = document.querySelectorAll('li');
+// console.log(allLiRef)
+
+//! Свойста элементов
+// console.log(document);
+// const body = document.body;
+// console.log(body);
+// const list = body.firstElementChild;
+// console.log(list);
+// const firstListItem = list.firstElementChild;
+// console.log(firstListItem);
+// const listItems = list.children;
+// console.log(listItems);
 
 
 //* --------------Класссы-----------
-
-
-
 
 
 // ! Геттеры и Сеттеры
@@ -617,6 +1237,65 @@
 
 // * Объекты------------------------------
 
+
+
+// const user = {
+//   name: '',
+//   surname: '',
+//   code: 0,
+// }
+// const Jack = {
+//   name: 'Jack',
+//   surname: 'Jackovich',
+//   code: 123456,
+// }
+// const dataJack = Object.keys(Jack)
+// console.log(dataJack)
+// for (const key of dataJack) {
+//   user[key] = Jack[key]
+// }
+
+
+
+// const user = {
+//   name: '',
+//   surname: '',
+//   code: 0,
+//   position:''
+// }
+// const Jack = {
+//   surname: 'Jackovich',
+//   code: 123456,
+//   name: 'Jack',
+//   secret: 564
+// }
+// Object.assign(user, Jack)
+// console.log(user)
+
+
+// const user = {
+//   name: '',
+//   surname: '',
+//   code: 0,
+// }
+// const Jack = {
+//   name: 'Jack',
+//   surname: 'Jackovich',
+//   code: 123456,
+// }
+// const dataJack = Object.keys(Jack)
+// console.log(dataJack)
+// for ( let key of dataJack) {
+//   if(!user.hasOwnProperty(key)) {
+//     continue
+//   }
+//   user[key] = Jack[key]
+// }
+// console.log(user)
+
+
+
+
 // равенство ссылочных типов
 // const a = { x: 1, y: 2 };
 // const b = a;
@@ -946,6 +1625,7 @@
 // ! операция (...args)
 // const fn = function (a, b, c, ...args) {
 //   console.log(`${a} ${b} ${c}`);
+//   console.log(a, b, c);
 //   console.log(args);
 // };
 // fn('hello', 1, 2, 3);
@@ -1099,18 +1779,22 @@
 // ! split переводит строку в массив и разбивает слово на буквы
 // const friends = 'Mango';
 // console.log(friends.split(''));
+// console.log(friends.split(' '));
 
 // ! join превращает массив в строку
 // const words = ['Mango', 'Poly', 'Ada'];
 // console.log(words)
+// console.log(words.join(""));
 // console.log(words.join(" "));
-// console.log(words.join("-"));
-// console.log(words.join(", "));
+// console.log(words.join("-   "));
+// console.log(words.join(",       "));
 
 // ! indexOf дает порядковый номер
 // const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
 // console.log(clients.indexOf("Poly")); // 2
 // console.log(clients.indexOf("Monkong")); // -1
+// console.log(clients.lastIndexOf("Mango")); // 2
+// console.log(clients.lastIndexOf("Monkong")); // -1
 
 // ! includes поиск логина
 // const logins = ['qwerty', 'asdfgh', 'zxcvbn'];
@@ -1149,10 +1833,21 @@
 // const numbers = [1, 2, 3, 4, 5];
 // const reverseNumber = numbers.reverse()
 // console.log(numbers)
+// console.log(reverseNumber)
 
 // const numbers = [111, 222, 333, 444, 555];
 // const reverseNumber = numbers.reverse()
 // console.log(numbers)
+
+// const words = ['qwe', 'rty', 'uio'];
+// const reverseWords = words.reverse()
+// console.log(words)
+
+// ! очищение массива
+// const words = ['qwe', 'rty', 'uio'];
+// console.log(words)
+// words.length = 0
+// console.log(words)
 
 // ! pop удаляет последний элемент из конца массива
 // const numbers = [1, 2, 3, 4, 5];
@@ -1787,3 +2482,27 @@ wall.addEventListener('click', (event) => {
 //     list.append(liKey)
 //   return liKey
 // }
+
+// ! Задача
+// function find(arr) {
+//   const newArr = []
+//   for (let i = 0; i < arr.length; i++) {
+//     const element = arr[i];
+//     if (element % 2 === 0) {
+//       newArr.push(element)
+//     }
+//   }
+//   newArr.sort()
+//   const newArray = []
+//   for (let i = 0; i < arr.length; i++) {
+//     const element = arr[i];
+//     if (element % 2 !== 0) {
+//       newArray.push(element)
+//     }
+//   }
+//   newArray.sort()
+//   const total = newArr.concat(newArray)
+//   const string = total.join(' ')
+// return string
+// }
+// console.log(find([5, 7, 8, 4]))
