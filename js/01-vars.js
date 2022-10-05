@@ -27,12 +27,379 @@
 
 
 
+//*   --- - асинхронные функции  - - - - --  -
 
 
+// const fetchUsers = async () => {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const users = await response.json();
+//   return users;
+// };
+// fetchUsers().then(users => console.log(users));
+
+
+// const fetchUsers = async () => {
+//   try {
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//     const users = await response.json();
+//     console.log(users);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
+// fetchUsers();
+
+// const fetchUsers = async () => {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const users = await response.json();
+//   return users;
+// };
+// fetchUsers()
+//   .then(users => console.log(users))
+//   .catch(error => console.log(error));
+
+// const fetchUsers = async () => {
+//   const baseUrl = "https://jsonplaceholder.typicode.com";
+//   const firstResponse = await fetch(`${baseUrl}/users/1`);
+//   const secondResponse = await fetch(`${baseUrl}/users/2`);
+//   const thirdResponse = await fetch(`${baseUrl}/users/3`);
+//   const firstUser = await firstResponse.json();
+//   const secondUser = await secondResponse.json();
+//   const thirdUser = await thirdResponse.json();
+//   console.log(firstUser, secondUser, thirdUser);
+// };
+// fetchUsers();
+
+// const fetchUsers = async () => {
+//   const baseUrl = "https://jsonplaceholder.typicode.com";
+//   const userIds = [1, 2, 3];
+//   // 1. Создаём массив промисов
+//   const arrayOfPromises = userIds.map(async userId => {
+//     const response = await fetch(`${baseUrl}/users/${userId}`);
+//     return response.json();
+//   });
+//   // 2. Запускаем все промисы параллельно и ждем их завершения
+//   const users = await Promise.all(arrayOfPromises);
+//   console.log(users);
+// };
+// fetchUsers();
+
+
+//* CRUD-------------------
+
+//! метод DELETE
+// const postIdToDelete = 1;
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postIdToDelete}`, {
+//   method: "DELETE",
+// })
+//   .then(() => console.log("Post deleted"))
+//   .catch(error => console.log("Error:", error));
+
+//! метод PUT и PATCH обновление
+// Change value of id property to update different post
+// const postToUpdate = {
+//   id: 1,
+//   body: "CRUD is really awesome",
+// };
+// const options = {
+//   method: "PATCH",
+//   body: JSON.stringify(postToUpdate),
+//   headers: {
+//     "Content-Type": "application/json; charset=UTF-8",
+//   },
+// }; 
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postToUpdate.id}`, options)
+//   .then(response => response.json())
+//   .then(post => console.log(post))
+//   .catch(error => console.log("ERROR" + error));
+
+// //! метод POST создание
+// const postToAdd = {
+//   author: "Mango",
+//   body: "CRUD is awesome",
+// };
+// const options = {
+//   method: "POST",
+//   body: JSON.stringify(postToAdd),
+//   headers: {
+//     "Content-Type": "application/json; charset=UTF-8",
+//   },
+// };
+// fetch("https://jsonplaceholder.typicode.com/posts", options)
+//   .then(response => response.json())
+//   .then(post => console.log(post))
+//   .catch(error => console.log(error));
+
+
+//! метод GET получение 
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//   .then(response => response.json())
+//   .then(posts => console.log(posts))
+//   .catch(error => console.log(error));
+
+// const postId = 1;
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+//   .then(response => response.json())
+//   .then(post => console.log(post))
+//   .catch(error => console.log(error));
+
+
+//*   --- -  пагинация  - - - - --  -
+
+// Задача от Жени
+
+// const prevBtn = document.querySelector('#prev-button');
+// const nextBtn = document.querySelector('#next-button');
+// const paginationNumbers = document.querySelector('#pagination-numbers');
+// const paginationList = document.querySelector('#paginated-list');
+// const listItems = paginationList.querySelectorAll('li');
+// let currentPage;
+// const paginationLimit = 10;
+// const pageCount = Math.ceil(listItems.length / paginationLimit);
+// function appendPageNumber(index) {
+//   const pageNumber = document.createElement('button');
+//   pageNumber.className = 'pagination-number';
+//   pageNumber.setAttribute('page-index', index);
+//   pageNumber.innerHTML = index;
+//   pageNumber.setAttribute('arial-label', 'page' + index);
+//   paginationNumbers.appendChild(pageNumber);
+// }
+// function getPaginationNumbers() {
+//   for (let i = 1; i <= pageCount; i++) {
+//     appendPageNumber(i);
+//   }
+// }
+// window.addEventListener('load', () => {
+//   getPaginationNumbers();
+//   setCurrentPage(1);
+//   document.querySelectorAll('.pagination-number').forEach(btn => {
+//     const pageIndex = Number(btn.getAttribute('page-index'));
+//     if (pageIndex) {
+//       btn.addEventListener('click', () => {
+//         setCurrentPage(pageIndex);
+//       });
+//     }
+//   });
+//   prevBtn.addEventListener('click', () => {
+//     setCurrentPage(currentPage - 1);
+//   });
+//   nextBtn.addEventListener('click', () => {
+//     setCurrentPage(currentPage + 1);
+//   });
+// });
+// function setCurrentPage(numberPage) {
+//   currentPage = numberPage;
+//   const prevRange = (numberPage - 1) * paginationLimit;
+//   const currentRange = numberPage * paginationLimit;
+//   addActivePageNumber();
+//   handlePageBtnStatus();
+//   listItems.forEach((item, index) => {
+//     item.classList.add('hidden');
+//     if (index >= prevRange && index < currentRange) {
+//       item.classList.remove('hidden');
+//     }
+//   });
+// }
+// function addActivePageNumber() {
+//   document.querySelectorAll('.pagination-number').forEach(btn => {
+//     const pageIndex = Number(btn.getAttribute('page-index'));
+//     btn.classList.remove('active');
+//     if (pageIndex === currentPage) {
+//       btn.classList.add('active');
+//     }
+//   });
+// }
+// function disabledBtn(btn) {
+//   btn.setAttribute('disabled', true);
+// }
+// function anableBtn(btn) {
+//   btn.removeAttribute('disabled');
+// }
+// function handlePageBtnStatus() {
+//   if (currentPage === 1) {
+//     disabledBtn(prevBtn);
+//   } else {
+//     anableBtn(prevBtn);
+//   }
+//   if (currentPage === pageCount) {
+//     disabledBtn(nextBtn);
+//   } else {
+//     anableBtn(nextBtn);
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// * HTTP запросы ----------------
+
+//3
+// const BASE_URL = 'https://swapi.dev/api'
+// const options = {
+//   method: 'POST', // 'GET', 
+//   headers: {
+//     'Content-Type': 'application/json; charset=UTF-8'
+//   },
+// }
+// const getData = (url, options = {}) => {
+//   return fetch(`${BASE_URL}/${url}`, options)
+//     .then(r => {
+//       console.log(r)
+//       if (!r.ok) {
+//         throw new Error('No Data')
+//       }
+//       return r.json()
+//     })
+// }
+// getData('films')
+//   .then((data => console.log(data)))
+//   .catch(err => {
+//     alert('Error')
+//   })
+
+
+//2
+// const BASE_URL = 'https://swapi.dev/api'
+// const getData = (url) => {
+//   return fetch(`${BASE_URL}/${url}`)
+//     .then(r => r.json())
+// }
+// getData('films').then((data => console.log(data)))
+// getData('people').then((data => console.log(data)))
+
+//1
+// const data = fetch('https://swapi.dev/api/people/')
+//   .then(r => r.json())
+//   .then(data => console.log(data))
+//   console.log(data)
+
+
+
+
+// ! покемоны 
+
+// const r = fetch('https://pokeapi.co/api/v2/pokemon?limit=60')
+//   .then(r => r.json())
+//   .then(console.log)
+
+
+
+
+
+
+// const r = fetch('https://pokeapi.co/api/v2/pokemon/2')
+//   .then(response => {
+//   return response.json();
+// }).then(pokemon => {
+//   console.log(pokemon)
+// })
+//   .catch(error => {
+//     console.log(error)
+//   })
 
 
 
 // * промисы --------------------------
+
+//доступ к удаленному серверу
+// const myGit = fetch('https://api.github.com/users/vasilymir')
+// console.log(myGit)
+
+//!получили данные с удаленного сервера по класике
+// fetch('https://api.github.com/users/vasilymir')
+//   .then(res => {
+// return res.json()
+//   }).then(res => {
+//   console.log(res)
+//   }).catch(err => {
+//     console.log('error ', err)
+//   })
+
+// !asynk awayt получили данные также само
+//   async function getGitData() {
+// // const getGitData = async () => { // аналог по стрелке
+//   try {
+//     const responce = await fetch('https://api.github.com/users/vasilymir')
+//   const data = await responce.json()
+//   console.log(data)
+//   } catch (err) {
+//     console.log('Error ', err)
+//   }
+// }
+//   getGitData()
+
+// пример класичесного написагия промиса по сну
+// function sleep(time) {
+//   return new Promise((resolve, reject) => {
+//     if (time < 500) {
+//       reject('Слишком мало сна')
+//     }
+//     setTimeout(() => resolve(`Поспал ${time}`), time)
+//   })
+// }
+// sleep(1500).then(res => {
+//   console.log(res)
+//   return sleep(1000)
+// }).then(res => {
+//   console.log(res)
+//   return sleep(500)
+// }).then(res => {
+//   console.log(res)
+//   return sleep(400)
+// }).then(res => {
+//   console.log(res)
+//   return sleep(300)
+// }).then(res => {
+//   console.log(res)
+// }).catch(err => {
+//   console.log('Ошибка', err)
+// })
+
+// !asynk awayt получили данные также само
+// function sleep(time) {
+//   return new Promise((resolve, reject) => {
+//     if (time < 500) {
+//       reject('Слишком мало сна')
+//     }
+//     setTimeout(() => resolve(`Поспал ${time}`), time)
+//   })
+// }
+// async function sleepAll() {
+//   try {
+//   const sleep1 = await sleep(1500)
+//   console.log(sleep1)
+//   const sleep2 = await sleep(1000)
+//   console.log(sleep2)
+//   const sleep3 = await sleep(500)
+//   console.log(sleep3)
+//   const sleep4 = await sleep(200)
+//   console.log(sleep4)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+// sleepAll()
+
+
+
+
 
 
 
@@ -374,6 +741,8 @@
 // console.log(new Date(15000));
 
 // ! Функция  setInterval
+
+// setInterval(() => console.log(Date.now()), 500)
 
 // const logger = time => console.log(`лог каждые ${time}ms - ${Date.now()}`)
 // console.log('до вызова сет интервал')
