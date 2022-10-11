@@ -1138,6 +1138,73 @@
 // console.log(objA)
 // console.log(objA.hasOwnProperty('x'))
 
+// function Car(model, age) {
+//   this.model = model
+//   this.age = age
+// }
+// console.log(Car.prototype)
+// Car.prototype.getAge = function () {
+//   return this.age
+// }
+// console.log(Car.prototype)
+// const teslaCar = new Car('tesla', 10)
+// console.log(teslaCar)
+
+class Vehikle {
+  constructor(carName, driverName) {
+    this.carName = this.carName
+    this.driverName = driverName
+    console.log('Constructor Vehikle was started: ', this.carName, this.driverName)
+  }
+  start() {
+    this.started = true
+    console.log(this.carName, ' was started')
+  }
+  stop() {
+    this.started = false
+    console.log(`${ this.carName} was stopped`)
+  }
+}
+
+// class Person {
+//   constructor(name, gender) {
+//   this.name = name
+//   this.gender = gender
+//   this.family = true
+//   }
+//   getName () {
+//     console.log(this.name)
+//   }
+//   setName  (name) {
+//     this.name = name
+//     console.log(this.name)
+//   }
+// }
+// const bob = new Person('Bob', 'male')
+// console.log(bob)
+
+// function Person(name, gender) {
+//   this.name = name
+//   this.gender = gender
+//   this.family = true
+// }
+// const bob = new Person('Bob', 'male')
+// console.log(bob)
+
+//*----------прототипы
+// const user = {
+//   name: '',
+//   surname: '',
+//   code: 0,
+//   position:''
+// }
+// console.log(user.__proto__)
+
+// console.log(Array.__proto__ === Object.__proto__)
+// console.log(Boolean.__proto__ === Object.__proto__)
+// console.log(String.__proto__ === Object.__proto__)
+// console.log(Number.__proto__ === Object.__proto__)
+
 //*----------Перебирающие методы массива
 
 // ! Метод reduce() среднее арифметическое в массиве
@@ -1601,7 +1668,13 @@
 
 // * Объекты------------------------------
 
-
+// const user = {
+//   name: '',
+//   surname: '',
+//   code: 0,
+// }
+// const something = Object.keys(user).reverse().join(' ')
+// console.log(something)
 
 // const user = {
 //   name: '',
@@ -1923,7 +1996,41 @@
 // const propertyName = 'name';
 // console.log(playlist[propertyName]) // обращение через переменную только через []
 
+// {} === {} false
+// {a:2} === {a:2} false
+
+// const a = { person: 'bob' };
+// console.log(a)
+// var b = a
+// var c = b
+// console.log(c)
+// c.person = 'bill'
+// c.age = 40
+// console.log(c)
+// console.log(a===c) // true
+// delete c.age
+// console.log(c)
+
+
 // * Функции----------------------------
+//! 2 варианта написания дефолтных значений
+
+// const DEFAULT = 5
+// function func(count = DEFAULT) {
+//   const personCount = count || DEFAULT
+// }
+
+//! длина функции это кол-во параметров
+// const func = (a,b,c) => { }
+// console.log(func.length)
+
+//! arguments
+// function a() {
+//   return arguments
+// }
+// var args = a(1, 2, 3, 4)
+// const array = Array.from(args)
+// console.log(array)
 
 // ! приоритетность вывода в консоль у функций
 // function bar () {
@@ -2139,6 +2246,15 @@
 // console.log(a)
 
 // * массивы------------------------------------------
+
+// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// console.log(clients.push('horse'))
+// console.log(clients.pop())
+
+// const a = [1, 2, 3]
+// console.log(Object.getPrototypeOf(a))
+// console.log(a.__proto__)
+
 
 // ! split переводит строку в массив и разбивает слово на буквы
 // const friends = 'Mango';
@@ -2701,22 +2817,90 @@
 
 
 
+//*---- типы данных
+// const func = () => { }
+// console.log(typeof (func))
+
+// console.log(typeof(null))
+
+// console.log(typeof(null)) // object - ошибка js
+// console.log(typeof(NaN)) // number
+
+// let id1 = Symbol("id");
+// let id2 = Symbol("id");
+// console.log(id1 == id2); // false
 
 
+// ! set, map, Weak Map, Weak Set
+// var arr = [1, 2, 3, 4, 5, 5, 5, 5, 5]
+// var set = new Set(arr)
+// console.log(arr)
+// console.log(set)
+
+// const a = [1, 2, 3] + 'abc'
+// const b = { name: 'bob' } + ''
+// const c = Boolean('')
+// const d = +'123abc'
+// const e = +true
+// console.log(a,b,c,d,e)
+
+// const func = () => 'here'
+// const a = !!'   '
+// const b = 1 && 2 && 3
+// const c = '' && false && NaN
+// const d = false || 2 || 3
+// const e = 1 && func && func()
+// console.log(a,b,c,d,e)
+
+// console.log(+true)
+// console.log(+false)
+// console.log(+undefined)
+// console.log(+null)
+// console.log(+'123')
+// console.log(Number('123'))
+// console.log(+'abc1')
+// console.log(+'12345')
+// console.log(+'0' || +'' || +' ')
+// console.log(null >= 0)
+
+// console.log(parseFloat('1.23asasaa'))
+// console.log(parseInt('1.23asasaa'))
+
+// console.log('     xcx      cxc'.trim())
+
+// console.log(!!undefined)
+// console.log(!!null)
+// console.log(!!0)
+// console.log(!!NaN)
+// console.log(!!Infinity)
+// console.log(!!1234)
+// console.log(!!' ')
+// console.log(!!'')
+// console.log(!![])
+// console.log(!!{})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//*------замыкание
+// const makeCounter = function () {
+//   let currCount = 0
+//   const increaseCount = () => {
+//     currCount++
+//   }
+//   const getCurrCount = () => {
+//     return currCount
+//   }
+//   return {
+//     increaseCount,
+//     getCurrCount
+//   }
+// }
+// const counter1 = makeCounter()
+// counter1.getCurrCount()
+// counter1.increaseCount()
+// counter1.increaseCount()
+// counter1.increaseCount()
+// counter1.getCurrCount()
+// console.log(counter1.getCurrCount())
 
 // ! Логика сортировки таблицы - работает со своим HTML и CSS 
 // const thead = document.querySelector('thead');
@@ -2870,3 +3054,5 @@ wall.addEventListener('click', (event) => {
 // return string
 // }
 // console.log(find([5, 7, 8, 4]))
+
+
